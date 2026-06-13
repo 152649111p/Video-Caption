@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.egg-info/
+*.bak
+*.bak2
+*.bak3
+*.bak_*
+.ipynb_checkpoints/
