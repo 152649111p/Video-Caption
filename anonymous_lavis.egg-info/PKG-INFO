@@ -1,0 +1,304 @@
+Metadata-Version: 2.4
+Name: anonymous-lavis
+Version: 1.0.1
+Summary: LAVIS - A One-stop Library for Language-Vision Intelligence
+Author: Dongxu Li, Junnan Li, Hung Le, Guangsen Wang, Silvio Savarese, Steven C.H. Hoi
+License: 3-Clause BSD
+Keywords: Vision-Language,Multimodal,Image Captioning,Generative AI,Deep Learning,Library,PyTorch
+Requires-Python: >=3.7.0
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: accelerate==0.20.3
+Requires-Dist: altair==5.0.1
+Requires-Dist: antlr4-python3-runtime==4.9.3
+Requires-Dist: asttokens==2.2.1
+Requires-Dist: attrs==23.1.0
+Requires-Dist: av==10.0.0
+Requires-Dist: backcall==0.2.0
+Requires-Dist: backports.zoneinfo==0.2.1
+Requires-Dist: blinker==1.6.2
+Requires-Dist: blis==0.7.9
+Requires-Dist: braceexpand==0.1.7
+Requires-Dist: cachetools==5.3.1
+Requires-Dist: catalogue==2.0.8
+Requires-Dist: certifi==2023.5.7
+Requires-Dist: cfgv==3.3.1
+Requires-Dist: charset-normalizer==3.1.0
+Requires-Dist: click==8.1.3
+Requires-Dist: cmake==3.26.4
+Requires-Dist: confection==0.0.4
+Requires-Dist: contexttimer==0.3.3
+Requires-Dist: contourpy==1.1.0
+Requires-Dist: cycler==0.11.0
+Requires-Dist: cymem==2.0.7
+Requires-Dist: data==0.4
+Requires-Dist: decorator==5.1.1
+Requires-Dist: decord==0.6.0
+Requires-Dist: deepspeed==0.9.2
+Requires-Dist: distlib==0.3.6
+Requires-Dist: einops==0.6.1
+Requires-Dist: executing==1.2.0
+Requires-Dist: fairscale==0.4.4
+Requires-Dist: filelock==3.12.2
+Requires-Dist: fonttools==4.40.0
+Requires-Dist: fsspec==2023.6.0
+Requires-Dist: ftfy==6.1.1
+Requires-Dist: funcsigs==1.0.2
+Requires-Dist: fvcore==0.1.5.post20221221
+Requires-Dist: gitdb==4.0.10
+Requires-Dist: GitPython==3.1.31
+Requires-Dist: hjson==3.1.0
+Requires-Dist: huggingface-hub==0.15.1
+Requires-Dist: identify==2.5.24
+Requires-Dist: idna==3.4
+Requires-Dist: imageio==2.31.1
+Requires-Dist: importlib-metadata==6.7.0
+Requires-Dist: importlib-resources==5.12.0
+Requires-Dist: iopath==0.1.10
+Requires-Dist: ipdb==0.13.13
+Requires-Dist: ipython==8.12.2
+Requires-Dist: jedi==0.18.2
+Requires-Dist: Jinja2==3.1.2
+Requires-Dist: jsonschema==4.17.3
+Requires-Dist: kaggle==1.5.13
+Requires-Dist: kiwisolver==1.4.4
+Requires-Dist: langcodes==3.3.0
+Requires-Dist: lazy_loader==0.2
+Requires-Dist: lit==16.0.6
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: MarkupSafe==2.1.3
+Requires-Dist: matplotlib==3.7.1
+Requires-Dist: matplotlib-inline==0.1.6
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: mpmath==1.3.0
+Requires-Dist: murmurhash==1.0.9
+Requires-Dist: networkx==3.1
+Requires-Dist: ninja==1.11.1
+Requires-Dist: nodeenv==1.8.0
+Requires-Dist: numpy==1.24.3
+Requires-Dist: nvidia-cublas-cu11==11.10.3.66
+Requires-Dist: nvidia-cuda-cupti-cu11==11.7.101
+Requires-Dist: nvidia-cuda-nvrtc-cu11==11.7.99
+Requires-Dist: nvidia-cuda-runtime-cu11==11.7.99
+Requires-Dist: nvidia-cudnn-cu11==8.5.0.96
+Requires-Dist: nvidia-cufft-cu11==10.9.0.58
+Requires-Dist: nvidia-curand-cu11==10.2.10.91
+Requires-Dist: nvidia-cusolver-cu11==11.4.0.1
+Requires-Dist: nvidia-cusparse-cu11==11.7.4.91
+Requires-Dist: nvidia-nccl-cu11==2.14.3
+Requires-Dist: nvidia-nvtx-cu11==11.7.91
+Requires-Dist: omegaconf==2.3.0
+Requires-Dist: opencv-python-headless==4.5.5.64
+Requires-Dist: opendatasets==0.1.22
+Requires-Dist: packaging==23.1
+Requires-Dist: pandas==2.0.2
+Requires-Dist: parameterized==0.9.0
+Requires-Dist: parso==0.8.3
+Requires-Dist: pathy==0.10.2
+Requires-Dist: peft==0.3.0
+Requires-Dist: pexpect==4.8.0
+Requires-Dist: pickleshare==0.7.5
+Requires-Dist: Pillow==9.5.0
+Requires-Dist: pkgutil_resolve_name==1.3.10
+Requires-Dist: platformdirs==3.7.0
+Requires-Dist: plotly==5.15.0
+Requires-Dist: portalocker==2.7.0
+Requires-Dist: pre-commit==3.3.3
+Requires-Dist: preshed==3.0.8
+Requires-Dist: prompt-toolkit==3.0.38
+Requires-Dist: protobuf==4.23.3
+Requires-Dist: psutil==5.9.5
+Requires-Dist: ptyprocess==0.7.0
+Requires-Dist: pure-eval==0.2.2
+Requires-Dist: py-cpuinfo==9.0.0
+Requires-Dist: pyarrow==12.0.1
+Requires-Dist: pycocoevalcap==1.2
+Requires-Dist: pycocotools==2.0.6
+Requires-Dist: pydantic==1.10.9
+Requires-Dist: pydeck==0.8.1b0
+Requires-Dist: Pygments==2.15.1
+Requires-Dist: Pympler==1.0.1
+Requires-Dist: pyparsing==3.1.0
+Requires-Dist: pyrsistent==0.19.3
+Requires-Dist: python-dateutil==2.8.2
+Requires-Dist: python-magic==0.4.27
+Requires-Dist: python-slugify==8.0.1
+Requires-Dist: pytorchvideo @ git+https://github.com/facebookresearch/pytorchvideo.git@28fe037d212663c6a24f373b94cc5d478c8c1a1d
+Requires-Dist: pytz==2023.3
+Requires-Dist: pytz-deprecation-shim==0.1.0.post0
+Requires-Dist: PyWavelets==1.4.1
+Requires-Dist: PyYAML==6.0
+Requires-Dist: regex==2022.10.31
+Requires-Dist: requests==2.31.0
+Requires-Dist: rich==13.4.2
+Requires-Dist: safetensors==0.3.1
+Requires-Dist: scikit-image==0.21.0
+Requires-Dist: scipy==1.10.1
+Requires-Dist: sentencepiece==0.1.99
+Requires-Dist: six==1.16.0
+Requires-Dist: smart-open==6.3.0
+Requires-Dist: smmap==5.0.0
+Requires-Dist: spacy==3.5.3
+Requires-Dist: spacy-legacy==3.0.12
+Requires-Dist: spacy-loggers==1.0.4
+Requires-Dist: srsly==2.4.6
+Requires-Dist: stack-data==0.6.2
+Requires-Dist: streamlit==1.23.1
+Requires-Dist: sympy==1.12
+Requires-Dist: tabulate==0.9.0
+Requires-Dist: tenacity==8.2.2
+Requires-Dist: termcolor==2.3.0
+Requires-Dist: text-unidecode==1.3
+Requires-Dist: thinc==8.1.10
+Requires-Dist: tifffile==2023.4.12
+Requires-Dist: timm==0.4.12
+Requires-Dist: tokenizers==0.13.3
+Requires-Dist: toml==0.10.2
+Requires-Dist: tomli==2.0.1
+Requires-Dist: toolz==0.12.0
+Requires-Dist: torch==1.13.1
+Requires-Dist: torchaudio==0.13.1
+Requires-Dist: torchvision==0.14.1
+Requires-Dist: tornado==6.3.2
+Requires-Dist: tqdm==4.64.1
+Requires-Dist: traitlets==5.9.0
+Requires-Dist: transformers==4.30.0
+Requires-Dist: triton==2.0.0
+Requires-Dist: typer==0.7.0
+Requires-Dist: typing_extensions==4.6.3
+Requires-Dist: tzdata==2023.3
+Requires-Dist: tzlocal==4.3.1
+Requires-Dist: urllib3==2.0.3
+Requires-Dist: validators==0.20.0
+Requires-Dist: virtualenv==20.23.1
+Requires-Dist: wasabi==1.1.2
+Requires-Dist: watchdog==3.0.0
+Requires-Dist: wcwidth==0.2.6
+Requires-Dist: webdataset==0.2.48
+Requires-Dist: yacs==0.1.8
+Requires-Dist: zipp==3.15.0
+Requires-Dist: wandb
+Dynamic: author
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: keywords
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Pretrained Image-Text Models are Secretly Video Captioners
+
+[Paper link](https://arxiv.org/pdf/2502.13363):
+{Chunhui Zhang*, Yiren Jian*}, Zhongyu Ouyang, Soroush Vosoughi
+
+Accepted as an **oral presentation⭐️** to the 2025 Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL 2025). The first two authors contributed equally and were listed in random order.
+
+Compared to open source models with minimal resource usage, we have ranked the top 2 best performers on the paperwithcode leaderboard.
+ 
+## Overview
+
+This **fully open-source and reproducible** study demonstrates how a pretrained image-text model, BLIP-2, can be adapted for video captioning tasks via **RL**. By leveraging BLIP-2's visual and language understanding, originally developed for image-text tasks, we show its effectiveness in generating video captions without needing architectural changes or additional parameters. This method allows us to achieve high-quality captioning for multi-frame video data, using reinforcement learning to further enhance performance. As a result, we achieve one of the top positions on the Papers with Code Leaderboard, surpassing industry-level captioning models.
+
+## Installation
+
+```bash
+conda create -n video_cap python=3.8
+conda activate video_cap
+pip install -e .
+
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+```
+
+## Data Preparation
+Please follow instructions from [here](LAVIS/lavis/datasets/download_scripts at main · anonymous/LAVIS) to download MSRVTT and MSVD datasets. VATEX datasets can be downloaded from its [official website](https://eric-xw.github.io/vatex-website/download.html).
+
+## Cross-Entropy Training
+We provide example script for training (MSRVTT and MSVD):
+```bash
+python -m torch.distributed.run --nproc_per_node=8 train.py --cfg-path lavis/projects/blip2/train/caption_msrvtt_flant5xl_ft.yaml
+python -m torch.distributed.run --nproc_per_node=8 train.py --cfg-path lavis/projects/blip2/train/caption_msvd_flant5xl_ft.yaml
+```
+
+## SCST Training
+We provide example script for training (MSRVTT and MSVD):
+```bash
+python -m torch.distributed.run --nproc_per_node=8 train.py --cfg-path lavis/projects/blip2/train/caption_msrvtt_flant5xl_scst.yaml
+python -m torch.distributed.run --nproc_per_node=8 train.py --cfg-path lavis/projects/blip2/train/caption_msvd_flant5xl_scst.yaml
+```
+
+Full training configurations can be found in `lavis/projects/blip2/train`.
+
+```
+caption_msrvtt_flant5xl_ft.yaml
+caption_msrvtt_flant5xl_scst.yaml
+caption_msrvtt_opt2.7b_ft.yaml
+caption_msrvtt_opt2.7b_scst.yaml
+caption_msrvtt_opt6.7b_ft.yaml
+caption_msrvtt_vicuna7b_ft.yaml
+caption_msvd_flant5xl_ft.yaml
+caption_msvd_flant5xl_scst.yaml
+caption_vatex_flant5xl_ft.yaml
+```
+
+## Evaluation
+We provide example scripts for evaluation (MSRVTT and MSVD):
+```bash
+python -m torch.distributed.run --nproc_per_node=8 evaluate.py --cfg-path lavis/projects/blip2/eval/caption_msrvtt_flant5xl_eval.yaml
+python -m torch.distributed.run --nproc_per_node=8 evaluate.py --cfg-path lavis/projects/blip2/eval/caption_msvd_flant5xl_eval.yaml
+```
+
+## More experiment details
+
+We hope these results are useful to your experimental explorations. Feel free to discuss this with us (especially Yiren and me)!
+
+
+| LLM Decoder | Description | Train ViT | Train LLM (LoRA) | Num of Frames | Video Resolution | Scst | CIDEr |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| FLAN-T5-XL | No MSRVTT training, directly using BLIP-2 zero-shot results. | - | - | - | - | - | 50.8 (val) |
+| FLAN-T5-XL | Best result with 8 frames, trained weights were later used for 8-frame RL training. | No | No | 8 | 224 | No | 73.6 |
+| FLAN-T5-XL | LoRA LLM, trained with 8 frames (epoch-based → iteration-based), used WebVid, and adjusted hyperparameters. WebVid did not improve as expected or even at all, so we abandoned it in future experiments. | No | Yes | 8 | 224 | No | 73.0 |
+| FLAN-T5-XL | LoRA, 8 frames (fine-tuned ViT, completely failed). | Yes | Yes | 8 | 224 | No | 61.8 |
+| FLAN-T5-XL | LoRA, 8 frames (fine-tuned ViT for only 5 epochs, not too bad). | Yes | Yes | 8 | 224 | No | 71.4 |
+| FLAN-T5-XL | LoRA, 8 frames (fine-tuned ViT, poor result, i.e., 68.4). | Yes | Yes | 8 | 224 | No | 68.4 |
+| FLAN-T5-XL | No MSRVTT training, directly using BLIP-2 zero-shot results. | - | - | - | - | - | 50.8 (val) |
+| FLAN-T5-XL | Train only Q-former. | No | No | 8 | 224 | No | 71.4 |
+| FLAN-T5-XL | Train only Q-former, better hyper-parameters? | No | No | 8 | 224 | No | 73.2 |
+| FLAN-T5-XL | Train only Q-former, conclusion: 4 frame results are worse than 8 frames. | No | No | 4 | 224 | No | 70.4 |
+| FLAN-T5-XL | Train only Q-former, conclusion: 4 frame results are worse than 8 frames. | No | No | 4 | 224 | No | 71.7 |
+| FLAN-T5-XL | Best result with 8 frames, trained weights used later for 8 frame RL training. | No | No | 8 | 224 | No | 73.6 |
+| FLAN-T5-XL | SCST reinforcement learning: initialized with pre-trained model 20231210062. CIDEr: 77.4 | - | - | - | - | Yes | 77.4 |
+| FLAN-T5-XL | SCST, changed a set of hyper-parameters: initialized with pre-trained model 20231210062. CIDEr: 77.4 | - | - | - | - | Yes | 77.4 |
+| FLAN-T5-XL | Changed another set of hyper-parameters and trained 8 frame Q-former only once. | No | No | 8 | 224 | No | 71.8 |
+| FLAN-T5-XL | First time training LoRA LLM, used 16 frames | No | Yes | 16 | 224 | No | 73.0 |
+| FLAN-T5-XL | LoRA LLM, used 8 frames (seemingly not as good as 16 frames), used webvid (pseudo-labeled in msrvtt) mixed data | No | Yes | 8 | 224 | No | 71.9 |
+| FLAN-T5-XL | LoRA LLM, used 8 frames (epoch based -> iter based), seems tuning hyper-parameters for LoRA can achieve 73+. Used pure webvid data | No | Yes | 8 | 224 | No | 73.7 |
+| FLAN-T5-XL | LoRA LLM, used 8 frames (epoch based -> iter based), used webvid, changed hyper-params again. Feels like webvid did not improve as expected or even not at all, so it was dropped in future experiments. | No | Yes | 8 | 224 | No | 73.0 |
+| FLAN-T5-XL | LoRA, 16 frames | No | Yes | 16 | 224 | No | 72.6 |
+| FLAN-T5-XL | LoRA, 8 frames (finetuned ViT, totally failed) | Yes | Yes | 8 | 224 | No | 61.8 |
+| FLAN-T5-XL | LoRA, 8 frames (finetuned ViT briefly for 5 epochs, not too bad) | Yes | Yes | 8 | 224 | No | 71.4 |
+| FLAN-T5-XL | LoRA, 8 frames (finetuned ViT, results were not good, i.e., 68.4) | Yes | Yes | 8 | 224 | No | 68.4 |
+| FLAN-T5-XL | No LoRA, 8 frame 336x pixel (higher resolution doesn't seem to help, training becomes slower, interpolated embeddings even worse result) | No | No | 8 | 364 | No | 70.7 |
+| FLAN-T5-XL | LoRA+SCST | No | No | 16 | 224 | Yes | 79.2 |
+| FLAN-T5-XL | LoRA+SCST (changed hyper-parameters) | No | No | 16 | 224 | Yes | 79.1 |
+| FLAN-T5-XL | LoRA+SCST (changed hyper-parameters) | No | No | 16 | 224 | Yes | 76.8 |
+| FLAN-T5-XL | LoRA+SCST (changed hyper-parameters) | No | No | 16 | 224 | Yes | 79.5 |
+| FLAN-T5-XL | LoRA+SCST (changed hyper-parameters) | No | No | 16 | 224 | Yes | 78.7 |
+| FLAN-T5-XL | LoRA+SCST (changed hyper-parameters) | No | No | 16 | 224 | Yes | 79.0 |
+| FLAN-T5-XL | LoRA+32 frames, no RL (conclusion: 32 frames are not very helpful) | No | No | 32 | 224 | No | 72.2 |
+| FLAN-T5-XL | LoRA+SCST+32 frames (conclusion: 32 frames are not very helpful) | No | No | 32 | 224 | Yes | 79.1 |
+| FLAN-T5-XL | LoRA+SCST+32 frames (new hyper-parameters) | No | No | 32 | 224 | Yes | 79.3 |
+| FLAN-T5-XL | LoRA+32 frames, no RL (seems re-trained once) | No | No | 32 | 224 | No | 72.5 |
+| FLAN-T5-XL | LoRA+32 frames, re-trained for RL, seems worse | No | No | 32 | 224 | Yes | 77.8 |
+| FLAN-T5-XL | LoRA+32 frames, re-trained for RL, seems ineffective | No | No | 32 | 224 | Yes | 78.3 |
+| FLAN-T5-XL | LoRA+32 frames, re-trained for RL, seems ineffective | No | No | 32 | 224 | Yes | 76.2 |
+| OPT-2.7b | Changed LLM, feels not as good as FLAN-T5, also very sensitive to hyper-parameters. | - | - | - | - | - | 71.3 |
+| OPT-2.7b | Pre-trained BLIP-2 using only 4M data | - | - | - | - | - | B1: 85.0, B2: 71.9, B3: 58.3, B4: 45.6, M: 31.8, R: 64.6, C: 65.7 |
+| OPT-6.7b | Switched to 6.7B model but failed 3 times, (i.e., CIDEr: 63.x) | - | - | - | - | - | 63.x |
+| Vicuna-7b | Used a larger model, results didn't seem to improve, conclusion: Vicuna-7b is unnecessary, too slow and large | No | No | - | - | No | 72.7 |
+| Vicuna-7b | Also tried SCST, it seems Vicuna SCST (RL) hardly improves (e.g., to 79), possibly because this model is already aligned with human preferences, reducing RL efficiency. | Yes | Yes | - | - | Yes | 74.8 |
+| Vicuna-7b | Also tried SCST, it seems Vicuna SCST (RL) hardly improves (e.g., to 79), possibly because this model is already aligned with human preferences, reducing RL efficiency. | Yes | Yes | - | - | Yes | 75.8 |
+| SimVLG | Also ran a random SimVLG (the simplest example using only LLM), used LLM without image-text pretraining, results were poor, indicating not only LLM is needed but also image-text alignment. | No | No | - | - | No | 57.3 |
+| Vicuna-7b | Also tried SCST, it seems Vicuna SCST (RL) hardly improves (e.g., to 79), possibly because this model is already aligned with human preferences, reducing RL efficiency. | Yes | Yes | - | - | Yes | 75.8 |
+| SimVLG | Also ran a random SimVLG (the simplest example using only LLM), used LLM without image-text pretraining, results were poor, indicating not only LLM is needed but also image-text alignment. | No | No | - | - | No | 57.3 |

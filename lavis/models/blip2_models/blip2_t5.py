@@ -111,11 +111,11 @@ class Blip2T5(Blip2Base):
             layer.output = None
             layer.intermediate = None
 
-        self.t5_tokenizer = T5TokenizerFast.from_pretrained(t5_model)   ### cache_dir="/home/anonymous/new_ssd/cache_dir"
-        t5_config = T5Config.from_pretrained(t5_model)
+        self.t5_tokenizer = T5TokenizerFast.from_pretrained(t5_model, cache_dir="/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/hf_cache")   ### cache_dir="/home/anonymous/new_ssd/cache_dir"
+        t5_config = T5Config.from_pretrained(t5_model, cache_dir="/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/hf_cache")
         t5_config.dense_act_fn = "gelu"
         self.t5_model = T5ForConditionalGeneration.from_pretrained(
-            t5_model, config=t5_config,   ### cache_dir="/home/anonymous/new_ssd/cache_dir"
+            t5_model, config=t5_config, cache_dir="/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/hf_cache",   ### cache_dir="/home/anonymous/new_ssd/cache_dir"
         )
 
         for name, param in self.t5_model.named_parameters():
@@ -314,6 +314,7 @@ class Blip2T5(Blip2Base):
         top_p=0.9,
         repetition_penalty=1.0,
         length_penalty=1.0,
+        no_repeat_ngram_size=0,
         num_captions=1,
         temperature=1,
     ):
@@ -387,6 +388,7 @@ class Blip2T5(Blip2Base):
                 min_length=min_length,
                 repetition_penalty=repetition_penalty,
                 length_penalty=length_penalty,
+                no_repeat_ngram_size=no_repeat_ngram_size,
                 num_return_sequences=num_captions,
             )
             output_text = self.t5_tokenizer.batch_decode(

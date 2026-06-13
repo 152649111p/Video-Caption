@@ -1,0 +1,22 @@
+# [CWR_复现] 重写: 只保留 captioning，砍掉 dialogue / vqa_reading_comprehension / retrieval / multimodal_classification
+from lavis.common.registry import registry
+from lavis.tasks.base_task import BaseTask
+from lavis.tasks.captioning import CaptionTask
+from lavis.tasks.image_text_pretrain import ImageTextPretrainTask
+from lavis.tasks.video_text_pretrain import VideoTextPretrainTask
+
+
+def setup_task(cfg):
+    assert "task" in cfg.run_cfg, "Task name must be provided."
+    task_name = cfg.run_cfg.task
+    task = registry.get_task_class(task_name).setup_task(cfg=cfg)
+    assert task is not None, "Task {} not properly registered.".format(task_name)
+    return task
+
+
+__all__ = [
+    "BaseTask",
+    "CaptionTask",
+    "ImageTextPretrainTask",
+    "VideoTextPretrainTask",
+]

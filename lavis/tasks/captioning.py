@@ -15,13 +15,15 @@ from lavis.tasks.base_task import BaseTask
 
 @registry.register_task("captioning")
 class CaptionTask(BaseTask):
-    def __init__(self, num_beams, max_len, min_len, evaluate, report_metric=True):
+    def __init__(self, num_beams, max_len, min_len, evaluate, repetition_penalty=1.0, no_repeat_ngram_size=0, report_metric=True):
         super().__init__()
 
         self.num_beams = num_beams
         self.max_len = max_len
         self.min_len = min_len
         self.evaluate = evaluate
+        self.repetition_penalty = repetition_penalty
+        self.no_repeat_ngram_size = no_repeat_ngram_size
 
         self.report_metric = report_metric
 
@@ -33,6 +35,8 @@ class CaptionTask(BaseTask):
         max_len = run_cfg.max_len
         min_len = run_cfg.min_len
         evaluate = run_cfg.evaluate
+        repetition_penalty = run_cfg.get("repetition_penalty", 1.0)
+        no_repeat_ngram_size = run_cfg.get("no_repeat_ngram_size", 0)
 
         report_metric = run_cfg.get("report_metric", True)
 
@@ -41,6 +45,8 @@ class CaptionTask(BaseTask):
             max_len=max_len,
             min_len=min_len,
             evaluate=evaluate,
+            repetition_penalty=repetition_penalty,
+            no_repeat_ngram_size=no_repeat_ngram_size,
             report_metric=report_metric,
         )
 
@@ -54,7 +60,18 @@ class CaptionTask(BaseTask):
             num_beams=self.num_beams,
             max_length=self.max_len,
             min_length=self.min_len,
+            repetition_penalty=self.repetition_penalty,
+            no_repeat_ngram_size=self.no_repeat_ngram_size,
         )
+
+        # 去掉prompt前缀"a video of"，避免影响指标计算
+        cleaned = []
+        for caption in captions:
+            c = caption.strip()
+            if c.lower().startswith("a video of "):
+                c = c[len("a video of "):].strip()
+            cleaned.append(c)
+        captions = cleaned
 
         img_ids = samples["image_id"]
         for caption, img_id in zip(captions, img_ids):
@@ -105,9 +122,9 @@ class CaptionTask(BaseTask):
 # Add support to evaluate custom captioning datasets
 # pip install git+https://github.com/jmhessel/pycocoevalcap.git
 # Based on https://github.com/jmhessel/clipscore
-from .pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
-from .pycocoevalcap.spice.spice import Spice
-from .pycocoevalcap.meteor.meteor import Meteor
+# from .pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
+# from .pycocoevalcap.spice.spice import Spice
+# from .pycocoevalcap.meteor.meteor import Meteor
 from .pycocoevalcap.bleu.bleu import Bleu
 from .pycocoevalcap.cider.cider import Cider
 from .pycocoevalcap.rouge.rouge import Rouge
@@ -119,7 +136,7 @@ def get_all_metrics(refs, cands, return_per_cap=False):
     names = []
 
     pycoco_eval_cap_scorers = [(Bleu(4), 'bleu'),
-                               (Meteor(), 'meteor'),
+                               # (Meteor(), 'meteor'),
                                (Rouge(), 'rouge'),
                                (Cider(), 'cider'),
                                ]
@@ -137,21 +154,17 @@ def get_all_metrics(refs, cands, return_per_cap=False):
 
 
 def tokenize(refs, cands, no_op=False):
-    # no_op is a debug option to see how significantly not using the PTB tokenizer
-    # affects things
-    tokenizer = PTBTokenizer()
-
+    # no_op=True: skip PTBTokenizer (no Java required)
     if no_op:
-        refs = {idx: [r for r in c_refs] for idx, c_refs in enumerate(refs)}
+        refs  = {idx: [r for r in c_refs] for idx, c_refs in enumerate(refs)}
         cands = {idx: [c] for idx, c in enumerate(cands)}
-
     else:
-        refs = {idx: [{'caption':r} for r in c_refs] for idx, c_refs in enumerate(refs)}
-        cands = {idx: [{'caption':c}] for idx, c in enumerate(cands)}
-
-        refs = tokenizer.tokenize(refs)
+        from .pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
+        tokenizer = PTBTokenizer()
+        refs  = {idx: [{'caption': r} for r in c_refs] for idx, c_refs in enumerate(refs)}
+        cands = {idx: [{'caption': c}] for idx, c in enumerate(cands)}
+        refs  = tokenizer.tokenize(refs)
         cands = tokenizer.tokenize(cands)
-
     return refs, cands
 
 
@@ -161,7 +174,7 @@ def pycoco_eval(scorer, refs, cands):
     refs is a list of lists of strings
     cands is a list of predictions
     '''
-    refs, cands = tokenize(refs, cands)
+    refs, cands = tokenize(refs, cands, no_op=True)
     average_score, scores = scorer.compute_score(refs, cands)
     return average_score, scores
 

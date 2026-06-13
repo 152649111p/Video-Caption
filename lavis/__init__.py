@@ -1,22 +1,10 @@
-"""
- Copyright (c) 2022, anonymous.com, inc.
- All rights reserved.
- SPDX-License-Identifier: BSD-3-Clause
- For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
-"""
-
-import os
-import sys
-
+# [CWR_复现] 重写 lavis/__init__.py: 保持 registry path 注册 + 简化 import
+import os, sys
 from omegaconf import OmegaConf
 
 from lavis.common.registry import registry
 
-from lavis.datasets.builders import *
-from lavis.models import *
-from lavis.processors import *
-from lavis.tasks import *
-
+__version__ = "1.0.1"
 
 root_dir = os.path.dirname(os.path.abspath(__file__))
 default_cfg = OmegaConf.load(os.path.join(root_dir, "configs/default.yaml"))

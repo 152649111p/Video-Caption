@@ -1,0 +1,550 @@
+nohup: ignoring input
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+| distributed init (rank 0, world 3): env://
+| distributed init (rank 1, world 3): env://
+| distributed init (rank 2, world 3): env://
+NCCL version 2.18.6+cuda12.1
+2026-06-12 19:20:30,435 [INFO] 
+=====  Running Parameters    =====
+2026-06-12 19:20:30,436 [INFO] {
+    "accum_grad_iters": 1,
+    "amp": true,
+    "batch_size_eval": 8,
+    "batch_size_train": 48,
+    "cache_root": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/00.\u6570\u636e\u96c6",
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": false,
+    "gpu": 0,
+    "init_lr": 0.00015,
+    "lr_sched": "linear_warmup_cosine_lr",
+    "max_epoch": 20,
+    "max_len": 32,
+    "min_len": 5,
+    "min_lr": 3e-05,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt",
+    "rank": 0,
+    "resume_ckpt_path": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt/20260612180/checkpoint_0.pth",
+    "runner": "runner_ce_save",
+    "seed": 42,
+    "task": "captioning",
+    "test_splits": [
+        "test"
+    ],
+    "train_splits": [
+        "train"
+    ],
+    "valid_splits": [],
+    "warmup_lr": 1e-08,
+    "warmup_steps": 1000,
+    "weight_decay": 0.05,
+    "world_size": 3
+}
+2026-06-12 19:20:30,436 [INFO] 
+======  Dataset Attributes  ======
+2026-06-12 19:20:30,436 [INFO] 
+======== msrvtt_caption =======
+2026-06-12 19:20:30,436 [INFO] {
+    "build_info": {
+        "annotations": {
+            "test": {
+                "storage": "msrvtt/annotations/cap_test.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_test.json"
+            },
+            "train": {
+                "storage": "msrvtt/annotations/cap_train.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_train.json"
+            },
+            "val": {
+                "storage": "msrvtt/annotations/cap_val.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_val.json"
+            }
+        },
+        "videos": {
+            "storage": "msrvtt/videos"
+        }
+    },
+    "data_type": "videos",
+    "text_processor": {
+        "eval": {
+            "name": "blip_caption"
+        },
+        "train": {
+            "name": "blip_caption"
+        }
+    },
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_eval"
+        },
+        "train": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_train"
+        }
+    }
+}
+2026-06-12 19:20:30,436 [INFO] 
+======  Model Attributes  ======
+2026-06-12 19:20:30,436 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "load_pretrained": true,
+    "lora": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/01.\u6a21\u578b\u9884\u8bad\u7ec3\u6743\u91cd\u6a21\u578b/blip2_pretrained_flant5xl.pth",
+    "prompt": "a video of",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": true,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_train.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_val.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_test.json
+2026-06-12 19:20:30,437 [INFO] Building datasets...
+2026-06-12 19:20:43,058 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.43s/it]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.46s/it]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.67s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.20s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.38s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.25s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.43s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:03<00:00,  1.41s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:03<00:00,  1.60s/it]
+2026-06-12 19:20:49,339 [INFO] load checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/blip2_pretrained_flant5xl.pth
+2026-06-12 19:20:55,444 [INFO] number of trainable parameters: 106739968
+2026-06-12 19:20:55,447 [INFO] Resume checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612180/checkpoint_0.pth
+2026-06-12 19:20:55,447 [INFO] [runner_ce_save] ===== Epoch 1 / 19 开始训练 =====
+2026-06-12 19:20:55,480 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2026-06-12 19:20:55,480 [INFO] Loaded 130260 records for train split from the dataset.
+2026-06-12 19:20:55,480 [INFO] Loaded 9940 records for val split from the dataset.
+2026-06-12 19:20:55,480 [INFO] Loaded 59800 records for test split from the dataset.
+2026-06-12 19:20:55,481 [INFO] Start training epoch 1, 904 iters per inner epoch.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Train: data epoch: [1]  [  0/904]  eta: 1:47:57  lr: 1.4926e-04  loss: 2.4585  time: 7.1657  data: 0.0000  max mem: 27560
+Train: data epoch: [1]  [ 50/904]  eta: 0:53:46  lr: 1.4926e-04  loss: 2.3878  time: 3.7167  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [100/904]  eta: 0:50:16  lr: 1.4926e-04  loss: 2.6050  time: 3.7246  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [150/904]  eta: 0:46:58  lr: 1.4926e-04  loss: 2.3572  time: 3.7282  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [200/904]  eta: 0:43:47  lr: 1.4926e-04  loss: 2.2888  time: 3.7180  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [250/904]  eta: 0:40:39  lr: 1.4926e-04  loss: 2.2091  time: 3.7214  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [300/904]  eta: 0:37:31  lr: 1.4926e-04  loss: 2.4358  time: 3.7106  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [350/904]  eta: 0:34:24  lr: 1.4926e-04  loss: 2.4576  time: 3.7209  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [400/904]  eta: 0:31:17  lr: 1.4926e-04  loss: 2.1263  time: 3.7203  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [450/904]  eta: 0:28:10  lr: 1.4926e-04  loss: 2.3358  time: 3.7018  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [500/904]  eta: 0:25:04  lr: 1.4926e-04  loss: 2.4479  time: 3.7222  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [550/904]  eta: 0:21:58  lr: 1.4926e-04  loss: 2.4551  time: 3.7258  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [600/904]  eta: 0:18:51  lr: 1.4926e-04  loss: 2.3644  time: 3.7259  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [650/904]  eta: 0:15:45  lr: 1.4926e-04  loss: 2.1385  time: 3.7143  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [700/904]  eta: 0:12:39  lr: 1.4926e-04  loss: 2.2730  time: 3.7183  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [750/904]  eta: 0:09:33  lr: 1.4926e-04  loss: 2.1614  time: 3.7171  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [800/904]  eta: 0:06:27  lr: 1.4926e-04  loss: 2.2355  time: 3.7165  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [850/904]  eta: 0:03:20  lr: 1.4926e-04  loss: 2.2970  time: 3.7208  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [900/904]  eta: 0:00:14  lr: 1.4926e-04  loss: 2.2326  time: 3.7173  data: 0.0000  max mem: 28085
+Train: data epoch: [1]  [903/904]  eta: 0:00:03  lr: 1.4926e-04  loss: 2.4257  time: 3.7345  data: 0.0000  max mem: 28085
+Train: data epoch: [1] Total time: 0:56:04 (3.7218 s / it)
+2026-06-12 20:17:00,012 [INFO] Averaged stats: lr: 0.0001  loss: 2.3048
+2026-06-12 20:17:00,037 [INFO] Saving checkpoint at epoch 1 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_1.pth.
+2026-06-12 20:17:01,318 [INFO] [runner_ce_save] ✅ checkpoint_1.pth 已保存
+2026-06-12 20:17:01,319 [INFO] [runner_ce_save] ===== Epoch 2 / 19 开始训练 =====
+2026-06-12 20:17:01,354 [INFO] Start training epoch 2, 904 iters per inner epoch.
+Train: data epoch: [2]  [  0/904]  eta: 2:06:32  lr: 1.4706e-04  loss: 2.1440  time: 8.3992  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [ 50/904]  eta: 0:54:13  lr: 1.4706e-04  loss: 2.1391  time: 3.7196  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [100/904]  eta: 0:50:25  lr: 1.4706e-04  loss: 2.3659  time: 3.7139  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [150/904]  eta: 0:47:06  lr: 1.4706e-04  loss: 2.0949  time: 3.7043  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [200/904]  eta: 0:43:53  lr: 1.4706e-04  loss: 2.4178  time: 3.7191  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [250/904]  eta: 0:40:43  lr: 1.4706e-04  loss: 2.3085  time: 3.7215  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [300/904]  eta: 0:37:35  lr: 1.4706e-04  loss: 2.3565  time: 3.7187  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [350/904]  eta: 0:34:27  lr: 1.4706e-04  loss: 2.2957  time: 3.7082  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [400/904]  eta: 0:31:19  lr: 1.4706e-04  loss: 2.5021  time: 3.7113  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [450/904]  eta: 0:28:12  lr: 1.4706e-04  loss: 2.5272  time: 3.7173  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [500/904]  eta: 0:25:05  lr: 1.4706e-04  loss: 2.0445  time: 3.7254  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [550/904]  eta: 0:21:58  lr: 1.4706e-04  loss: 2.5034  time: 3.6986  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [600/904]  eta: 0:18:52  lr: 1.4706e-04  loss: 1.8697  time: 3.7156  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [650/904]  eta: 0:15:46  lr: 1.4706e-04  loss: 2.0163  time: 3.7258  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [700/904]  eta: 0:12:39  lr: 1.4706e-04  loss: 2.3890  time: 3.7362  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [750/904]  eta: 0:09:33  lr: 1.4706e-04  loss: 2.3401  time: 3.7352  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [800/904]  eta: 0:06:27  lr: 1.4706e-04  loss: 2.3860  time: 3.7248  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [850/904]  eta: 0:03:21  lr: 1.4706e-04  loss: 2.0768  time: 3.7046  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [900/904]  eta: 0:00:14  lr: 1.4706e-04  loss: 2.4057  time: 3.7245  data: 0.0000  max mem: 28085
+Train: data epoch: [2]  [903/904]  eta: 0:00:03  lr: 1.4706e-04  loss: 2.1467  time: 3.7379  data: 0.0000  max mem: 28085
+Train: data epoch: [2] Total time: 0:56:06 (3.7237 s / it)
+2026-06-12 21:13:07,577 [INFO] Averaged stats: lr: 0.0001  loss: 2.2505
+2026-06-12 21:13:07,602 [INFO] Saving checkpoint at epoch 2 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_2.pth.
+2026-06-12 21:13:08,968 [INFO] [runner_ce_save] ✅ checkpoint_2.pth 已保存
+2026-06-12 21:13:08,969 [INFO] [runner_ce_save] ===== Epoch 3 / 19 开始训练 =====
+2026-06-12 21:13:09,003 [INFO] Start training epoch 3, 904 iters per inner epoch.
+Train: data epoch: [3]  [  0/904]  eta: 2:11:06  lr: 1.4346e-04  loss: 2.0957  time: 8.7020  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [ 50/904]  eta: 0:54:14  lr: 1.4346e-04  loss: 2.3348  time: 3.7094  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [100/904]  eta: 0:50:27  lr: 1.4346e-04  loss: 2.0864  time: 3.7165  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [150/904]  eta: 0:47:09  lr: 1.4346e-04  loss: 2.0157  time: 3.7259  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [200/904]  eta: 0:43:54  lr: 1.4346e-04  loss: 2.2516  time: 3.7084  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [250/904]  eta: 0:40:44  lr: 1.4346e-04  loss: 2.3184  time: 3.7163  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [300/904]  eta: 0:37:35  lr: 1.4346e-04  loss: 2.1462  time: 3.7174  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [350/904]  eta: 0:34:28  lr: 1.4346e-04  loss: 2.1678  time: 3.7231  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [400/904]  eta: 0:31:20  lr: 1.4346e-04  loss: 2.1371  time: 3.7139  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [450/904]  eta: 0:28:13  lr: 1.4346e-04  loss: 2.1620  time: 3.7281  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [500/904]  eta: 0:25:06  lr: 1.4346e-04  loss: 2.1009  time: 3.7208  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [550/904]  eta: 0:21:59  lr: 1.4346e-04  loss: 2.1734  time: 3.7153  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [600/904]  eta: 0:18:52  lr: 1.4346e-04  loss: 2.1164  time: 3.7122  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [650/904]  eta: 0:15:46  lr: 1.4346e-04  loss: 1.9456  time: 3.7123  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [700/904]  eta: 0:12:40  lr: 1.4346e-04  loss: 2.2905  time: 3.7222  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [750/904]  eta: 0:09:33  lr: 1.4346e-04  loss: 2.2922  time: 3.7199  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [800/904]  eta: 0:06:27  lr: 1.4346e-04  loss: 2.3426  time: 3.7248  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [850/904]  eta: 0:03:21  lr: 1.4346e-04  loss: 2.1657  time: 3.7062  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [900/904]  eta: 0:00:14  lr: 1.4346e-04  loss: 1.8688  time: 3.7216  data: 0.0000  max mem: 28085
+Train: data epoch: [3]  [903/904]  eta: 0:00:03  lr: 1.4346e-04  loss: 1.9725  time: 3.7415  data: 0.0000  max mem: 28085
+Train: data epoch: [3] Total time: 0:56:06 (3.7245 s / it)
+2026-06-12 22:09:15,940 [INFO] Averaged stats: lr: 0.0001  loss: 2.2017
+2026-06-12 22:09:15,965 [INFO] Saving checkpoint at epoch 3 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_3.pth.
+2026-06-12 22:09:17,224 [INFO] [runner_ce_save] ✅ checkpoint_3.pth 已保存
+2026-06-12 22:09:17,225 [INFO] [runner_ce_save] ===== Epoch 4 / 19 开始训练 =====
+2026-06-12 22:09:17,260 [INFO] Start training epoch 4, 904 iters per inner epoch.
+Train: data epoch: [4]  [  0/904]  eta: 2:10:06  lr: 1.3854e-04  loss: 2.0158  time: 8.6354  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [ 50/904]  eta: 0:54:20  lr: 1.3854e-04  loss: 2.2919  time: 3.7192  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [100/904]  eta: 0:50:29  lr: 1.3854e-04  loss: 2.2096  time: 3.7184  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [150/904]  eta: 0:47:09  lr: 1.3854e-04  loss: 2.6080  time: 3.7220  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [200/904]  eta: 0:43:54  lr: 1.3854e-04  loss: 2.0844  time: 3.7107  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [250/904]  eta: 0:40:44  lr: 1.3854e-04  loss: 2.1226  time: 3.7193  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [300/904]  eta: 0:37:35  lr: 1.3854e-04  loss: 2.2097  time: 3.7196  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [350/904]  eta: 0:34:27  lr: 1.3854e-04  loss: 2.2621  time: 3.7210  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [400/904]  eta: 0:31:19  lr: 1.3854e-04  loss: 2.2836  time: 3.7152  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [450/904]  eta: 0:28:12  lr: 1.3854e-04  loss: 2.3356  time: 3.7168  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [500/904]  eta: 0:25:05  lr: 1.3854e-04  loss: 2.1602  time: 3.7210  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [550/904]  eta: 0:21:59  lr: 1.3854e-04  loss: 2.2540  time: 3.7209  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [600/904]  eta: 0:18:52  lr: 1.3854e-04  loss: 2.2013  time: 3.7230  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [650/904]  eta: 0:15:46  lr: 1.3854e-04  loss: 2.0694  time: 3.7148  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [700/904]  eta: 0:12:39  lr: 1.3854e-04  loss: 2.1081  time: 3.7158  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [750/904]  eta: 0:09:33  lr: 1.3854e-04  loss: 2.4782  time: 3.7195  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [800/904]  eta: 0:06:27  lr: 1.3854e-04  loss: 2.4452  time: 3.7201  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [850/904]  eta: 0:03:21  lr: 1.3854e-04  loss: 2.0785  time: 3.7188  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [900/904]  eta: 0:00:14  lr: 1.3854e-04  loss: 2.4267  time: 3.7147  data: 0.0000  max mem: 28085
+Train: data epoch: [4]  [903/904]  eta: 0:00:03  lr: 1.3854e-04  loss: 2.0016  time: 3.7359  data: 0.0000  max mem: 28085
+Train: data epoch: [4] Total time: 0:56:06 (3.7239 s / it)
+2026-06-12 23:05:23,632 [INFO] Averaged stats: lr: 0.0001  loss: 2.1841
+2026-06-12 23:05:23,657 [INFO] Saving checkpoint at epoch 4 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_4.pth.
+2026-06-12 23:05:24,903 [INFO] [runner_ce_save] ✅ checkpoint_4.pth 已保存
+2026-06-12 23:05:24,904 [INFO] [runner_ce_save] ===== Epoch 5 / 19 开始训练 =====
+2026-06-12 23:05:24,938 [INFO] Start training epoch 5, 904 iters per inner epoch.
+Train: data epoch: [5]  [  0/904]  eta: 2:12:20  lr: 1.3243e-04  loss: 2.2233  time: 8.7839  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [ 50/904]  eta: 0:54:16  lr: 1.3243e-04  loss: 2.5130  time: 3.6961  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [100/904]  eta: 0:50:32  lr: 1.3243e-04  loss: 2.4639  time: 3.7224  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [150/904]  eta: 0:47:08  lr: 1.3243e-04  loss: 2.3632  time: 3.7170  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [200/904]  eta: 0:43:55  lr: 1.3243e-04  loss: 2.2610  time: 3.7033  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [250/904]  eta: 0:40:44  lr: 1.3243e-04  loss: 2.3113  time: 3.7160  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [300/904]  eta: 0:37:35  lr: 1.3243e-04  loss: 2.1450  time: 3.7175  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [350/904]  eta: 0:34:27  lr: 1.3243e-04  loss: 2.2907  time: 3.7247  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [400/904]  eta: 0:31:20  lr: 1.3243e-04  loss: 1.9718  time: 3.7130  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [450/904]  eta: 0:28:12  lr: 1.3243e-04  loss: 2.1480  time: 3.7157  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [500/904]  eta: 0:25:06  lr: 1.3243e-04  loss: 2.4355  time: 3.7171  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [550/904]  eta: 0:21:59  lr: 1.3243e-04  loss: 2.4441  time: 3.7227  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [600/904]  eta: 0:18:52  lr: 1.3243e-04  loss: 2.4565  time: 3.7183  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [650/904]  eta: 0:15:46  lr: 1.3243e-04  loss: 2.4005  time: 3.7184  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [700/904]  eta: 0:12:39  lr: 1.3243e-04  loss: 2.4637  time: 3.7238  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [750/904]  eta: 0:09:33  lr: 1.3243e-04  loss: 2.1433  time: 3.7169  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [800/904]  eta: 0:06:27  lr: 1.3243e-04  loss: 2.4425  time: 3.7149  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [850/904]  eta: 0:03:21  lr: 1.3243e-04  loss: 2.3349  time: 3.7153  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [900/904]  eta: 0:00:14  lr: 1.3243e-04  loss: 2.4326  time: 3.7206  data: 0.0000  max mem: 28085
+Train: data epoch: [5]  [903/904]  eta: 0:00:03  lr: 1.3243e-04  loss: 2.2350  time: 3.7423  data: 0.0000  max mem: 28085
+Train: data epoch: [5] Total time: 0:56:06 (3.7239 s / it)
+2026-06-13 00:01:31,319 [INFO] Averaged stats: lr: 0.0001  loss: 2.2548
+2026-06-13 00:01:31,352 [INFO] Saving checkpoint at epoch 5 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_5.pth.
+2026-06-13 00:01:32,951 [INFO] [runner_ce_save] ✅ checkpoint_5.pth 已保存
+2026-06-13 00:01:32,952 [INFO] [runner_ce_save] ===== Epoch 6 / 19 开始训练 =====
+2026-06-13 00:01:32,998 [INFO] Start training epoch 6, 904 iters per inner epoch.
+Train: data epoch: [6]  [  0/904]  eta: 2:10:07  lr: 1.2527e-04  loss: 2.4571  time: 8.6367  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [ 50/904]  eta: 0:54:12  lr: 1.2527e-04  loss: 2.2860  time: 3.7116  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [100/904]  eta: 0:50:25  lr: 1.2527e-04  loss: 1.8419  time: 3.7177  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [150/904]  eta: 0:47:05  lr: 1.2527e-04  loss: 2.1908  time: 3.7143  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [200/904]  eta: 0:43:53  lr: 1.2527e-04  loss: 2.2693  time: 3.7278  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [250/904]  eta: 0:40:43  lr: 1.2527e-04  loss: 2.3798  time: 3.7205  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [300/904]  eta: 0:37:35  lr: 1.2527e-04  loss: 2.2003  time: 3.7228  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [350/904]  eta: 0:34:27  lr: 1.2527e-04  loss: 2.4016  time: 3.7172  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [400/904]  eta: 0:31:19  lr: 1.2527e-04  loss: 2.1560  time: 3.7129  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [450/904]  eta: 0:28:12  lr: 1.2527e-04  loss: 2.1726  time: 3.7120  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [500/904]  eta: 0:25:05  lr: 1.2527e-04  loss: 2.3257  time: 3.7220  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [550/904]  eta: 0:21:58  lr: 1.2527e-04  loss: 2.1182  time: 3.7148  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [600/904]  eta: 0:18:52  lr: 1.2527e-04  loss: 2.1531  time: 3.7158  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [650/904]  eta: 0:15:45  lr: 1.2527e-04  loss: 2.1418  time: 3.7151  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [700/904]  eta: 0:12:39  lr: 1.2527e-04  loss: 2.2524  time: 3.7232  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [750/904]  eta: 0:09:33  lr: 1.2527e-04  loss: 2.1463  time: 3.7195  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [800/904]  eta: 0:06:27  lr: 1.2527e-04  loss: 2.2231  time: 3.7185  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [850/904]  eta: 0:03:21  lr: 1.2527e-04  loss: 2.6019  time: 3.7214  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [900/904]  eta: 0:00:14  lr: 1.2527e-04  loss: 2.1093  time: 3.7189  data: 0.0000  max mem: 28085
+Train: data epoch: [6]  [903/904]  eta: 0:00:03  lr: 1.2527e-04  loss: 2.0934  time: 3.7397  data: 0.0000  max mem: 28085
+Train: data epoch: [6] Total time: 0:56:05 (3.7232 s / it)
+2026-06-13 00:57:38,801 [INFO] Averaged stats: lr: 0.0001  loss: 2.2420
+2026-06-13 00:57:38,825 [INFO] Saving checkpoint at epoch 6 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_6.pth.
+2026-06-13 00:57:40,037 [INFO] [runner_ce_save] ✅ checkpoint_6.pth 已保存
+2026-06-13 00:57:40,037 [INFO] [runner_ce_save] ===== Epoch 7 / 19 开始训练 =====
+2026-06-13 00:57:40,072 [INFO] Start training epoch 7, 904 iters per inner epoch.
+Train: data epoch: [7]  [  0/904]  eta: 2:09:32  lr: 1.1724e-04  loss: 2.1754  time: 8.5979  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [ 50/904]  eta: 0:54:14  lr: 1.1724e-04  loss: 2.2520  time: 3.7151  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [100/904]  eta: 0:50:26  lr: 1.1724e-04  loss: 2.2690  time: 3.7179  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [150/904]  eta: 0:47:06  lr: 1.1724e-04  loss: 2.3380  time: 3.7178  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [200/904]  eta: 0:43:54  lr: 1.1724e-04  loss: 2.2508  time: 3.7224  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [250/904]  eta: 0:40:43  lr: 1.1724e-04  loss: 2.0204  time: 3.7174  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [300/904]  eta: 0:37:34  lr: 1.1724e-04  loss: 2.1477  time: 3.7162  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [350/904]  eta: 0:34:27  lr: 1.1724e-04  loss: 2.4762  time: 3.7150  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [400/904]  eta: 0:31:19  lr: 1.1724e-04  loss: 2.3372  time: 3.7218  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [450/904]  eta: 0:28:12  lr: 1.1724e-04  loss: 2.2016  time: 3.7200  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [500/904]  eta: 0:25:05  lr: 1.1724e-04  loss: 2.2342  time: 3.7183  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [550/904]  eta: 0:21:59  lr: 1.1724e-04  loss: 2.0744  time: 3.7240  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [600/904]  eta: 0:18:52  lr: 1.1724e-04  loss: 2.2679  time: 3.7099  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [650/904]  eta: 0:15:46  lr: 1.1724e-04  loss: 2.3062  time: 3.7036  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [700/904]  eta: 0:12:39  lr: 1.1724e-04  loss: 1.8893  time: 3.7236  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [750/904]  eta: 0:09:33  lr: 1.1724e-04  loss: 2.0242  time: 3.7206  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [800/904]  eta: 0:06:27  lr: 1.1724e-04  loss: 2.3922  time: 3.7144  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [850/904]  eta: 0:03:21  lr: 1.1724e-04  loss: 2.0047  time: 3.7152  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [900/904]  eta: 0:00:14  lr: 1.1724e-04  loss: 2.0954  time: 3.7201  data: 0.0000  max mem: 28085
+Train: data epoch: [7]  [903/904]  eta: 0:00:03  lr: 1.1724e-04  loss: 2.0870  time: 3.7359  data: 0.0000  max mem: 28085
+Train: data epoch: [7] Total time: 0:56:06 (3.7238 s / it)
+2026-06-13 01:53:46,419 [INFO] Averaged stats: lr: 0.0001  loss: 2.2019
+2026-06-13 01:53:46,443 [INFO] Saving checkpoint at epoch 7 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_7.pth.
+2026-06-13 01:53:47,631 [INFO] [runner_ce_save] ✅ checkpoint_7.pth 已保存
+2026-06-13 01:53:47,632 [INFO] [runner_ce_save] ===== Epoch 8 / 19 开始训练 =====
+2026-06-13 01:53:47,666 [INFO] Start training epoch 8, 904 iters per inner epoch.
+Train: data epoch: [8]  [  0/904]  eta: 2:10:31  lr: 1.0854e-04  loss: 2.1479  time: 8.6632  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [ 50/904]  eta: 0:54:15  lr: 1.0854e-04  loss: 2.2785  time: 3.7164  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [100/904]  eta: 0:50:27  lr: 1.0854e-04  loss: 2.3686  time: 3.7177  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [150/904]  eta: 0:47:06  lr: 1.0854e-04  loss: 2.3536  time: 3.7167  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [200/904]  eta: 0:43:53  lr: 1.0854e-04  loss: 1.9939  time: 3.7144  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [250/904]  eta: 0:40:42  lr: 1.0854e-04  loss: 2.0922  time: 3.7101  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [300/904]  eta: 0:37:33  lr: 1.0854e-04  loss: 2.1997  time: 3.7157  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [350/904]  eta: 0:34:26  lr: 1.0854e-04  loss: 2.3378  time: 3.7179  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [400/904]  eta: 0:31:19  lr: 1.0854e-04  loss: 2.0040  time: 3.7184  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [450/904]  eta: 0:28:12  lr: 1.0854e-04  loss: 2.2769  time: 3.7209  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [500/904]  eta: 0:25:05  lr: 1.0854e-04  loss: 2.1663  time: 3.7130  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [550/904]  eta: 0:21:58  lr: 1.0854e-04  loss: 2.0030  time: 3.7169  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [600/904]  eta: 0:18:52  lr: 1.0854e-04  loss: 2.1521  time: 3.7203  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [650/904]  eta: 0:15:45  lr: 1.0854e-04  loss: 2.0812  time: 3.7185  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [700/904]  eta: 0:12:39  lr: 1.0854e-04  loss: 2.3296  time: 3.7114  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [750/904]  eta: 0:09:33  lr: 1.0854e-04  loss: 2.3481  time: 3.7123  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [800/904]  eta: 0:06:27  lr: 1.0854e-04  loss: 2.1007  time: 3.7205  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [850/904]  eta: 0:03:21  lr: 1.0854e-04  loss: 2.3020  time: 3.7150  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [900/904]  eta: 0:00:14  lr: 1.0854e-04  loss: 2.4472  time: 3.7182  data: 0.0000  max mem: 28085
+Train: data epoch: [8]  [903/904]  eta: 0:00:03  lr: 1.0854e-04  loss: 2.1430  time: 3.7350  data: 0.0000  max mem: 28085
+Train: data epoch: [8] Total time: 0:56:05 (3.7231 s / it)
+2026-06-13 02:49:53,346 [INFO] Averaged stats: lr: 0.0001  loss: 2.1689
+2026-06-13 02:49:53,370 [INFO] Saving checkpoint at epoch 8 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_8.pth.
+2026-06-13 02:49:54,622 [INFO] [runner_ce_save] ✅ checkpoint_8.pth 已保存
+2026-06-13 02:49:54,623 [INFO] [runner_ce_save] ===== Epoch 9 / 19 开始训练 =====
+2026-06-13 02:49:54,657 [INFO] Start training epoch 9, 904 iters per inner epoch.
+Train: data epoch: [9]  [  0/904]  eta: 2:09:22  lr: 9.9386e-05  loss: 2.2942  time: 8.5873  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [ 50/904]  eta: 0:54:15  lr: 9.9386e-05  loss: 2.1550  time: 3.7162  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [100/904]  eta: 0:50:28  lr: 9.9386e-05  loss: 2.0814  time: 3.7222  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [150/904]  eta: 0:47:07  lr: 9.9386e-05  loss: 1.9628  time: 3.7132  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [200/904]  eta: 0:43:54  lr: 9.9386e-05  loss: 2.1086  time: 3.7145  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [250/904]  eta: 0:40:44  lr: 9.9386e-05  loss: 2.3312  time: 3.7200  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [300/904]  eta: 0:37:35  lr: 9.9386e-05  loss: 1.9300  time: 3.7138  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [350/904]  eta: 0:34:27  lr: 9.9386e-05  loss: 2.1055  time: 3.7215  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [400/904]  eta: 0:31:20  lr: 9.9386e-05  loss: 2.2978  time: 3.7235  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [450/904]  eta: 0:28:13  lr: 9.9386e-05  loss: 2.1011  time: 3.7159  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [500/904]  eta: 0:25:06  lr: 9.9386e-05  loss: 2.0614  time: 3.7200  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [550/904]  eta: 0:21:59  lr: 9.9386e-05  loss: 2.1243  time: 3.7241  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [600/904]  eta: 0:18:53  lr: 9.9386e-05  loss: 2.2404  time: 3.7176  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [650/904]  eta: 0:15:46  lr: 9.9386e-05  loss: 1.9225  time: 3.7191  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [700/904]  eta: 0:12:40  lr: 9.9386e-05  loss: 1.9738  time: 3.7113  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [750/904]  eta: 0:09:33  lr: 9.9386e-05  loss: 2.2482  time: 3.7138  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [800/904]  eta: 0:06:27  lr: 9.9386e-05  loss: 1.9879  time: 3.7250  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [850/904]  eta: 0:03:21  lr: 9.9386e-05  loss: 2.0718  time: 3.7205  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [900/904]  eta: 0:00:14  lr: 9.9386e-05  loss: 1.9810  time: 3.7233  data: 0.0000  max mem: 28085
+Train: data epoch: [9]  [903/904]  eta: 0:00:03  lr: 9.9386e-05  loss: 2.3006  time: 3.7393  data: 0.0000  max mem: 28085
+Train: data epoch: [9] Total time: 0:56:07 (3.7253 s / it)
+2026-06-13 03:46:02,316 [INFO] Averaged stats: lr: 0.0001  loss: 2.1454
+2026-06-13 03:46:02,341 [INFO] Saving checkpoint at epoch 9 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_9.pth.
+2026-06-13 03:46:03,740 [INFO] [runner_ce_save] ✅ checkpoint_9.pth 已保存
+2026-06-13 03:46:03,741 [INFO] [runner_ce_save] ===== Epoch 10 / 19 开始训练 =====
+2026-06-13 03:46:03,776 [INFO] Start training epoch 10, 904 iters per inner epoch.
+Train: data epoch: [10]  [  0/904]  eta: 2:13:37  lr: 9.0000e-05  loss: 2.0290  time: 8.8694  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [ 50/904]  eta: 0:54:25  lr: 9.0000e-05  loss: 2.0847  time: 3.7256  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [100/904]  eta: 0:50:31  lr: 9.0000e-05  loss: 2.2711  time: 3.7185  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [150/904]  eta: 0:47:11  lr: 9.0000e-05  loss: 2.1560  time: 3.7251  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [200/904]  eta: 0:43:56  lr: 9.0000e-05  loss: 2.1068  time: 3.7105  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [250/904]  eta: 0:40:46  lr: 9.0000e-05  loss: 2.3438  time: 3.7244  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [300/904]  eta: 0:37:36  lr: 9.0000e-05  loss: 2.0376  time: 3.7121  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [350/904]  eta: 0:34:28  lr: 9.0000e-05  loss: 2.1036  time: 3.7114  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [400/904]  eta: 0:31:21  lr: 9.0000e-05  loss: 2.3792  time: 3.7227  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [450/904]  eta: 0:28:14  lr: 9.0000e-05  loss: 2.2340  time: 3.7100  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [500/904]  eta: 0:25:06  lr: 9.0000e-05  loss: 1.9568  time: 3.7140  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [550/904]  eta: 0:22:00  lr: 9.0000e-05  loss: 2.1610  time: 3.7146  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [600/904]  eta: 0:18:53  lr: 9.0000e-05  loss: 2.3533  time: 3.7314  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [650/904]  eta: 0:15:46  lr: 9.0000e-05  loss: 2.2748  time: 3.6998  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [700/904]  eta: 0:12:40  lr: 9.0000e-05  loss: 2.1968  time: 3.7135  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [750/904]  eta: 0:09:33  lr: 9.0000e-05  loss: 2.0639  time: 3.7171  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [800/904]  eta: 0:06:27  lr: 9.0000e-05  loss: 2.2152  time: 3.7221  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [850/904]  eta: 0:03:21  lr: 9.0000e-05  loss: 2.1061  time: 3.7227  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [900/904]  eta: 0:00:14  lr: 9.0000e-05  loss: 2.1417  time: 3.7140  data: 0.0000  max mem: 28085
+Train: data epoch: [10]  [903/904]  eta: 0:00:03  lr: 9.0000e-05  loss: 2.0987  time: 3.7329  data: 0.0000  max mem: 28085
+Train: data epoch: [10] Total time: 0:56:08 (3.7258 s / it)
+2026-06-13 04:42:11,911 [INFO] Averaged stats: lr: 0.0001  loss: 2.1259
+2026-06-13 04:42:11,935 [INFO] Saving checkpoint at epoch 10 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_10.pth.
+2026-06-13 04:42:13,389 [INFO] [runner_ce_save] ✅ checkpoint_10.pth 已保存
+2026-06-13 04:42:13,389 [INFO] [runner_ce_save] ===== Epoch 11 / 19 开始训练 =====
+2026-06-13 04:42:13,427 [INFO] Start training epoch 11, 904 iters per inner epoch.
+Train: data epoch: [11]  [  0/904]  eta: 2:12:20  lr: 8.0614e-05  loss: 2.0295  time: 8.7841  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [ 50/904]  eta: 0:54:19  lr: 8.0614e-05  loss: 2.0990  time: 3.7210  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [100/904]  eta: 0:50:28  lr: 8.0614e-05  loss: 2.2738  time: 3.7187  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [150/904]  eta: 0:47:08  lr: 8.0614e-05  loss: 1.7514  time: 3.7244  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [200/904]  eta: 0:43:55  lr: 8.0614e-05  loss: 2.1028  time: 3.7229  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [250/904]  eta: 0:40:45  lr: 8.0614e-05  loss: 1.9759  time: 3.7249  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [300/904]  eta: 0:37:36  lr: 8.0614e-05  loss: 2.0107  time: 3.7181  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [350/904]  eta: 0:34:28  lr: 8.0614e-05  loss: 2.0788  time: 3.7146  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [400/904]  eta: 0:31:20  lr: 8.0614e-05  loss: 2.1204  time: 3.7212  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [450/904]  eta: 0:28:14  lr: 8.0614e-05  loss: 2.0282  time: 3.7482  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [500/904]  eta: 0:25:07  lr: 8.0614e-05  loss: 2.1235  time: 3.7038  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [550/904]  eta: 0:22:00  lr: 8.0614e-05  loss: 2.2843  time: 3.7238  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [600/904]  eta: 0:18:53  lr: 8.0614e-05  loss: 2.1551  time: 3.7224  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [650/904]  eta: 0:15:46  lr: 8.0614e-05  loss: 2.1312  time: 3.7161  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [700/904]  eta: 0:12:40  lr: 8.0614e-05  loss: 1.8994  time: 3.7120  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [750/904]  eta: 0:09:33  lr: 8.0614e-05  loss: 2.1219  time: 3.7293  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [800/904]  eta: 0:06:27  lr: 8.0614e-05  loss: 2.1898  time: 3.7285  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [850/904]  eta: 0:03:21  lr: 8.0614e-05  loss: 2.2113  time: 3.7208  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [900/904]  eta: 0:00:14  lr: 8.0614e-05  loss: 2.1006  time: 3.7175  data: 0.0000  max mem: 28085
+Train: data epoch: [11]  [903/904]  eta: 0:00:03  lr: 8.0614e-05  loss: 1.9817  time: 3.7363  data: 0.0000  max mem: 28085
+Train: data epoch: [11] Total time: 0:56:08 (3.7260 s / it)
+2026-06-13 05:38:21,773 [INFO] Averaged stats: lr: 0.0001  loss: 2.1060
+2026-06-13 05:38:21,799 [INFO] Saving checkpoint at epoch 11 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_11.pth.
+2026-06-13 05:38:23,094 [INFO] [runner_ce_save] ✅ checkpoint_11.pth 已保存
+2026-06-13 05:38:23,095 [INFO] [runner_ce_save] ===== Epoch 12 / 19 开始训练 =====
+2026-06-13 05:38:23,129 [INFO] Start training epoch 12, 904 iters per inner epoch.
+Train: data epoch: [12]  [  0/904]  eta: 2:09:37  lr: 7.1459e-05  loss: 2.1339  time: 8.6037  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [ 50/904]  eta: 0:54:17  lr: 7.1459e-05  loss: 2.1501  time: 3.7203  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [100/904]  eta: 0:50:31  lr: 7.1459e-05  loss: 2.2596  time: 3.7164  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [150/904]  eta: 0:47:10  lr: 7.1459e-05  loss: 2.2325  time: 3.7219  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [200/904]  eta: 0:43:56  lr: 7.1459e-05  loss: 2.0551  time: 3.7019  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [250/904]  eta: 0:40:45  lr: 7.1459e-05  loss: 1.9947  time: 3.7214  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [300/904]  eta: 0:37:36  lr: 7.1459e-05  loss: 2.1125  time: 3.7168  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [350/904]  eta: 0:34:28  lr: 7.1459e-05  loss: 2.3164  time: 3.7139  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [400/904]  eta: 0:31:20  lr: 7.1459e-05  loss: 2.0396  time: 3.7195  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [450/904]  eta: 0:28:13  lr: 7.1459e-05  loss: 1.9274  time: 3.7177  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [500/904]  eta: 0:25:06  lr: 7.1459e-05  loss: 1.8656  time: 3.7251  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [550/904]  eta: 0:21:59  lr: 7.1459e-05  loss: 1.9290  time: 3.7215  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [600/904]  eta: 0:18:53  lr: 7.1459e-05  loss: 2.1828  time: 3.7172  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [650/904]  eta: 0:15:46  lr: 7.1459e-05  loss: 2.0616  time: 3.7203  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [700/904]  eta: 0:12:40  lr: 7.1459e-05  loss: 2.2367  time: 3.7243  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [750/904]  eta: 0:09:33  lr: 7.1459e-05  loss: 2.3659  time: 3.7212  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [800/904]  eta: 0:06:27  lr: 7.1459e-05  loss: 2.0732  time: 3.7222  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [850/904]  eta: 0:03:21  lr: 7.1459e-05  loss: 2.0150  time: 3.7246  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [900/904]  eta: 0:00:14  lr: 7.1459e-05  loss: 2.0948  time: 3.7254  data: 0.0000  max mem: 28085
+Train: data epoch: [12]  [903/904]  eta: 0:00:03  lr: 7.1459e-05  loss: 2.0736  time: 3.7427  data: 0.0000  max mem: 28085
+Train: data epoch: [12] Total time: 0:56:08 (3.7259 s / it)
+2026-06-13 06:34:31,376 [INFO] Averaged stats: lr: 0.0001  loss: 2.0909
+2026-06-13 06:34:31,399 [INFO] Saving checkpoint at epoch 12 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_12.pth.
+2026-06-13 06:34:32,680 [INFO] [runner_ce_save] ✅ checkpoint_12.pth 已保存
+2026-06-13 06:34:32,681 [INFO] [runner_ce_save] ===== Epoch 13 / 19 开始训练 =====
+2026-06-13 06:34:32,715 [INFO] Start training epoch 13, 904 iters per inner epoch.
+Train: data epoch: [13]  [  0/904]  eta: 2:09:56  lr: 6.2761e-05  loss: 2.0255  time: 8.6241  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [ 50/904]  eta: 0:54:18  lr: 6.2761e-05  loss: 2.0075  time: 3.7193  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [100/904]  eta: 0:50:29  lr: 6.2761e-05  loss: 2.1304  time: 3.7136  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [150/904]  eta: 0:47:09  lr: 6.2761e-05  loss: 2.0094  time: 3.7223  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [200/904]  eta: 0:43:56  lr: 6.2761e-05  loss: 2.1314  time: 3.7334  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [250/904]  eta: 0:40:45  lr: 6.2761e-05  loss: 1.9943  time: 3.7201  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [300/904]  eta: 0:37:36  lr: 6.2761e-05  loss: 2.1565  time: 3.7115  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [350/904]  eta: 0:34:28  lr: 6.2761e-05  loss: 1.9952  time: 3.7283  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [400/904]  eta: 0:31:20  lr: 6.2761e-05  loss: 2.1347  time: 3.7157  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [450/904]  eta: 0:28:13  lr: 6.2761e-05  loss: 2.0589  time: 3.7176  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [500/904]  eta: 0:25:06  lr: 6.2761e-05  loss: 2.2523  time: 3.7133  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [550/904]  eta: 0:22:00  lr: 6.2761e-05  loss: 1.9460  time: 3.7341  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [600/904]  eta: 0:18:53  lr: 6.2761e-05  loss: 1.9077  time: 3.7169  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [650/904]  eta: 0:15:46  lr: 6.2761e-05  loss: 2.2514  time: 3.7141  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [700/904]  eta: 0:12:40  lr: 6.2761e-05  loss: 1.9878  time: 3.7258  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [750/904]  eta: 0:09:33  lr: 6.2761e-05  loss: 1.9953  time: 3.7114  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [800/904]  eta: 0:06:27  lr: 6.2761e-05  loss: 2.0267  time: 3.7121  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [850/904]  eta: 0:03:21  lr: 6.2761e-05  loss: 2.0882  time: 3.7318  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [900/904]  eta: 0:00:14  lr: 6.2761e-05  loss: 2.0851  time: 3.7154  data: 0.0000  max mem: 28085
+Train: data epoch: [13]  [903/904]  eta: 0:00:03  lr: 6.2761e-05  loss: 2.0081  time: 3.7298  data: 0.0000  max mem: 28085
+Train: data epoch: [13] Total time: 0:56:07 (3.7256 s / it)
+2026-06-13 07:30:40,626 [INFO] Averaged stats: lr: 0.0001  loss: 2.0735
+2026-06-13 07:30:40,650 [INFO] Saving checkpoint at epoch 13 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_13.pth.
+2026-06-13 07:30:41,991 [INFO] [runner_ce_save] ✅ checkpoint_13.pth 已保存
+2026-06-13 07:30:41,992 [INFO] [runner_ce_save] ===== Epoch 14 / 19 开始训练 =====
+2026-06-13 07:30:42,027 [INFO] Start training epoch 14, 904 iters per inner epoch.
+Train: data epoch: [14]  [  0/904]  eta: 2:10:43  lr: 5.4733e-05  loss: 2.0495  time: 8.6766  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [ 50/904]  eta: 0:54:23  lr: 5.4733e-05  loss: 2.1938  time: 3.7320  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [100/904]  eta: 0:50:29  lr: 5.4733e-05  loss: 1.9983  time: 3.7204  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [150/904]  eta: 0:47:09  lr: 5.4733e-05  loss: 2.1062  time: 3.7212  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [200/904]  eta: 0:43:55  lr: 5.4733e-05  loss: 2.0711  time: 3.7209  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [250/904]  eta: 0:40:44  lr: 5.4733e-05  loss: 1.9823  time: 3.7085  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [300/904]  eta: 0:37:35  lr: 5.4733e-05  loss: 2.0111  time: 3.7227  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [350/904]  eta: 0:34:27  lr: 5.4733e-05  loss: 1.8742  time: 3.7158  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [400/904]  eta: 0:31:20  lr: 5.4733e-05  loss: 1.9798  time: 3.7198  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [450/904]  eta: 0:28:12  lr: 5.4733e-05  loss: 2.2361  time: 3.7176  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [500/904]  eta: 0:25:06  lr: 5.4733e-05  loss: 2.1872  time: 3.7225  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [550/904]  eta: 0:21:59  lr: 5.4733e-05  loss: 2.1811  time: 3.7227  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [600/904]  eta: 0:18:52  lr: 5.4733e-05  loss: 2.2318  time: 3.7173  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [650/904]  eta: 0:15:46  lr: 5.4733e-05  loss: 2.2229  time: 3.7123  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [700/904]  eta: 0:12:40  lr: 5.4733e-05  loss: 2.1411  time: 3.7189  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [750/904]  eta: 0:09:33  lr: 5.4733e-05  loss: 2.1110  time: 3.7153  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [800/904]  eta: 0:06:27  lr: 5.4733e-05  loss: 2.0667  time: 3.7165  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [850/904]  eta: 0:03:21  lr: 5.4733e-05  loss: 1.9779  time: 3.7192  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [900/904]  eta: 0:00:14  lr: 5.4733e-05  loss: 2.0700  time: 3.7249  data: 0.0000  max mem: 28085
+Train: data epoch: [14]  [903/904]  eta: 0:00:03  lr: 5.4733e-05  loss: 2.0185  time: 3.7420  data: 0.0000  max mem: 28085
+Train: data epoch: [14] Total time: 0:56:06 (3.7243 s / it)
+2026-06-13 08:26:48,838 [INFO] Averaged stats: lr: 0.0001  loss: 2.0609
+2026-06-13 08:26:48,862 [INFO] Saving checkpoint at epoch 14 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_14.pth.
+2026-06-13 08:26:50,222 [INFO] [runner_ce_save] ✅ checkpoint_14.pth 已保存
+2026-06-13 08:26:50,223 [INFO] [runner_ce_save] ===== Epoch 15 / 19 开始训练 =====
+2026-06-13 08:26:50,258 [INFO] Start training epoch 15, 904 iters per inner epoch.
+Train: data epoch: [15]  [  0/904]  eta: 2:09:41  lr: 4.7574e-05  loss: 1.9263  time: 8.6082  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [ 50/904]  eta: 0:54:19  lr: 4.7574e-05  loss: 1.9936  time: 3.7237  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [100/904]  eta: 0:50:33  lr: 4.7574e-05  loss: 2.0819  time: 3.7259  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [150/904]  eta: 0:47:12  lr: 4.7574e-05  loss: 2.0094  time: 3.7253  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [200/904]  eta: 0:43:57  lr: 4.7574e-05  loss: 2.1449  time: 3.7186  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [250/904]  eta: 0:40:47  lr: 4.7574e-05  loss: 2.1653  time: 3.7206  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [300/904]  eta: 0:37:37  lr: 4.7574e-05  loss: 1.9897  time: 3.7203  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [350/904]  eta: 0:34:29  lr: 4.7574e-05  loss: 2.0346  time: 3.7282  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [400/904]  eta: 0:31:21  lr: 4.7574e-05  loss: 2.2314  time: 3.7203  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [450/904]  eta: 0:28:14  lr: 4.7574e-05  loss: 2.1807  time: 3.7272  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [500/904]  eta: 0:25:07  lr: 4.7574e-05  loss: 2.1718  time: 3.7213  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [550/904]  eta: 0:22:00  lr: 4.7574e-05  loss: 1.9376  time: 3.7177  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [600/904]  eta: 0:18:53  lr: 4.7574e-05  loss: 2.0290  time: 3.7149  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [650/904]  eta: 0:15:46  lr: 4.7574e-05  loss: 1.8901  time: 3.7232  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [700/904]  eta: 0:12:40  lr: 4.7574e-05  loss: 2.2611  time: 3.7190  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [750/904]  eta: 0:09:33  lr: 4.7574e-05  loss: 1.9547  time: 3.7120  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [800/904]  eta: 0:06:27  lr: 4.7574e-05  loss: 2.1743  time: 3.7233  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [850/904]  eta: 0:03:21  lr: 4.7574e-05  loss: 2.0265  time: 3.7193  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [900/904]  eta: 0:00:14  lr: 4.7574e-05  loss: 2.0056  time: 3.7148  data: 0.0000  max mem: 28085
+Train: data epoch: [15]  [903/904]  eta: 0:00:03  lr: 4.7574e-05  loss: 2.1604  time: 3.7321  data: 0.0000  max mem: 28085
+Train: data epoch: [15] Total time: 0:56:07 (3.7254 s / it)
+2026-06-13 09:22:58,043 [INFO] Averaged stats: lr: 0.0000  loss: 2.0485
+2026-06-13 09:22:58,067 [INFO] Saving checkpoint at epoch 15 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612192/checkpoint_15.pth.
+2026-06-13 09:22:59,454 [INFO] [runner_ce_save] ✅ checkpoint_15.pth 已保存
+2026-06-13 09:22:59,455 [INFO] [runner_ce_save] ===== Epoch 16 / 19 开始训练 =====
+2026-06-13 09:22:59,489 [INFO] Start training epoch 16, 904 iters per inner epoch.
+Train: data epoch: [16]  [  0/904]  eta: 2:11:36  lr: 4.1459e-05  loss: 2.0958  time: 8.7349  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [ 50/904]  eta: 0:54:19  lr: 4.1459e-05  loss: 1.8428  time: 3.7211  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [100/904]  eta: 0:50:28  lr: 4.1459e-05  loss: 1.9607  time: 3.7130  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [150/904]  eta: 0:47:07  lr: 4.1459e-05  loss: 2.4899  time: 3.7120  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [200/904]  eta: 0:43:54  lr: 4.1459e-05  loss: 2.0952  time: 3.7219  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [250/904]  eta: 0:40:44  lr: 4.1459e-05  loss: 2.0222  time: 3.7244  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [300/904]  eta: 0:37:35  lr: 4.1459e-05  loss: 2.1900  time: 3.7211  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [350/904]  eta: 0:34:27  lr: 4.1459e-05  loss: 2.0856  time: 3.7226  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [400/904]  eta: 0:31:19  lr: 4.1459e-05  loss: 2.0859  time: 3.7134  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [450/904]  eta: 0:28:12  lr: 4.1459e-05  loss: 1.8310  time: 3.7200  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [500/904]  eta: 0:25:06  lr: 4.1459e-05  loss: 1.9868  time: 3.7188  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [550/904]  eta: 0:21:59  lr: 4.1459e-05  loss: 2.1154  time: 3.7174  data: 0.0000  max mem: 28085
+Train: data epoch: [16]  [600/904]  eta: 0:18:52  lr: 4.1459e-05  loss: 1.9693  time: 3.7245  data: 0.0000  max mem: 28085

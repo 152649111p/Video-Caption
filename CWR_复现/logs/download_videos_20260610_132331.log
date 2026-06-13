@@ -1,0 +1,19 @@
+nohup: ignoring input
+[13:23:31] ▶ Step1: ModelScope 下载 MSR-VTT...
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+2026-06-10 13:23:37,360 - modelscope - WARNING - Repo AI-ModelScope/msr-vtt not exists on https://www.modelscope.cn, will try on alternative endpoint https://www.modelscope.ai.
+2026-06-10 13:23:37,726 - modelscope - ERROR - Repo AI-ModelScope/msr-vtt not exists on either https://www.modelscope.cn or https://www.modelscope.ai
+[下载] 开始，目标缓存: /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/00.数据集/msrvtt_modelscope_tmp
+[下载] 数据集约 6~7GB，预计 10~30 分钟，请耐心等待...
+Traceback (most recent call last):
+  File "<stdin>", line 11, in <module>
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/modelscope/hub/snapshot_download.py", line 145, in snapshot_download
+    return _snapshot_download(
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/modelscope/hub/snapshot_download.py", line 323, in _snapshot_download
+    endpoint = _api.get_endpoint_for_read(
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/modelscope/hub/api.py", line 631, in get_endpoint_for_read
+    self.repo_exists(
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/modelscope/hub/api.py", line 789, in repo_exists
+    raise HTTPError(r)
+requests.exceptions.HTTPError: <Response [404]>

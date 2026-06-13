@@ -1,0 +1,141 @@
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+| distributed init (rank 0, world 1): env://
+NCCL version 2.18.6+cuda12.1
+2026-06-11 17:49:53,919 [INFO] 
+=====  Running Parameters    =====
+2026-06-11 17:49:53,920 [INFO] {
+    "accum_grad_iters": 2,
+    "amp": true,
+    "batch_size_eval": 8,
+    "batch_size_train": 16,
+    "cache_root": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/00.\u6570\u636e\u96c6",
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": false,
+    "gpu": 0,
+    "init_lr": 5e-05,
+    "lr_sched": "linear_warmup_cosine_lr",
+    "max_epoch": 20,
+    "max_len": 32,
+    "min_len": 5,
+    "min_lr": 1e-05,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt",
+    "rank": 0,
+    "resume_ckpt_path": null,
+    "runner": "runner_ce_save",
+    "seed": 42,
+    "task": "captioning",
+    "test_splits": [
+        "test"
+    ],
+    "train_splits": [
+        "train"
+    ],
+    "valid_splits": [
+        "val"
+    ],
+    "warmup_lr": 1e-08,
+    "warmup_steps": 1000,
+    "weight_decay": 0.05,
+    "world_size": 1
+}
+2026-06-11 17:49:53,921 [INFO] 
+======  Dataset Attributes  ======
+2026-06-11 17:49:53,921 [INFO] 
+======== msrvtt_caption =======
+2026-06-11 17:49:53,922 [INFO] {
+    "build_info": {
+        "annotations": {
+            "test": {
+                "storage": "msrvtt/annotations/cap_test.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_test.json"
+            },
+            "train": {
+                "storage": "msrvtt/annotations/cap_train.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_train.json"
+            },
+            "val": {
+                "storage": "msrvtt/annotations/cap_val.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_val.json"
+            }
+        },
+        "videos": {
+            "storage": "msrvtt/videos"
+        }
+    },
+    "data_type": "videos",
+    "text_processor": {
+        "eval": {
+            "name": "blip_caption"
+        },
+        "train": {
+            "name": "blip_caption"
+        }
+    },
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_eval"
+        },
+        "train": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_train"
+        }
+    }
+}
+2026-06-11 17:49:53,923 [INFO] 
+======  Model Attributes  ======
+2026-06-11 17:49:53,923 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "load_pretrained": true,
+    "lora": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/01.\u6a21\u578b\u9884\u8bad\u7ec3\u6743\u91cd\u6a21\u578b/blip2_pretrained_flant5xl.pth",
+    "prompt": "a video of",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": true,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_train.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_val.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_test.json
+2026-06-11 17:49:53,926 [INFO] Building datasets...
+2026-06-11 17:50:07,943 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|                                                               | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|███████████████████████████▌                           | 1/2 [00:01<00:01,  1.21s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.44it/s]Loading checkpoint shards: 100%|███████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.29it/s]
+2026-06-11 17:50:12,416 [INFO] load checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/blip2_pretrained_flant5xl.pth
+2026-06-11 17:50:12,428 [INFO] Start training
+2026-06-11 17:50:13,659 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2026-06-11 17:50:13,659 [INFO] Loaded 130260 records for train split from the dataset.
+2026-06-11 17:50:13,659 [INFO] Loaded 9940 records for val split from the dataset.
+2026-06-11 17:50:13,659 [INFO] Loaded 59800 records for test split from the dataset.
+2026-06-11 17:50:13,675 [INFO] number of trainable parameters: 106739968
+2026-06-11 17:50:13,676 [INFO] Start training epoch 0, 8141 iters per inner epoch.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Train: data epoch: [0]  [   0/8141]  eta: 9:00:17  lr: 1.0000e-08  loss: 1.5451  time: 3.9820  data: 0.0000  max mem: 13924
+Train: data epoch: [0]  [  50/8141]  eta: 3:43:00  lr: 2.5095e-06  loss: 1.3842  time: 1.6074  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 100/8141]  eta: 3:39:02  lr: 5.0090e-06  loss: 1.3179  time: 1.6168  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 150/8141]  eta: 3:37:14  lr: 7.5085e-06  loss: 1.4283  time: 1.6233  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 200/8141]  eta: 3:35:29  lr: 1.0008e-05  loss: 1.2379  time: 1.6244  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 250/8141]  eta: 3:33:49  lr: 1.2508e-05  loss: 1.0891  time: 1.6172  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 300/8141]  eta: 3:32:19  lr: 1.5007e-05  loss: 1.2531  time: 1.6112  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 350/8141]  eta: 3:30:57  lr: 1.7507e-05  loss: 1.0661  time: 1.6301  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 400/8141]  eta: 3:29:29  lr: 2.0006e-05  loss: 0.9832  time: 1.6159  data: 0.0000  max mem: 15946
+Train: data epoch: [0]  [ 450/8141]  eta: 3:28:11  lr: 2.2506e-05  loss: 1.3443  time: 1.6257  data: 0.0000  max mem: 15946

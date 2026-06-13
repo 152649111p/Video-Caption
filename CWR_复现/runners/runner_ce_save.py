@@ -1,0 +1,76 @@
+"""
+runner_ce_save 【修改版 v2】
+- 训练与评估完全分离
+- 每个 epoch 训练完立即保存 checkpoint_N.pth
+- 训练循环中不跑任何 val（彻底避免 METEOR BrokenPipeError）
+- evaluate_only=True 时才跑 val，供离线评估脚本使用
+"""
+import time
+import datetime
+import logging
+
+from lavis.common.registry import registry
+from lavis.common.dist_utils import is_main_process
+from lavis.runners.runner_base import RunnerBase
+
+
+@registry.register_runner("runner_ce_save")
+class RunnerCESave(RunnerBase):
+
+    def train(self):
+        start_time = time.time()
+        self.log_config()
+
+        if not self.evaluate_only and self.resume_ckpt_path is not None:
+            self._load_checkpoint(self.resume_ckpt_path)
+
+        for cur_epoch in range(self.start_epoch, self.max_epoch):
+
+            if not self.evaluate_only:
+                logging.info(
+                    f"[runner_ce_save] ===== Epoch {cur_epoch} / "
+                    f"{self.max_epoch - 1} 开始训练 ====="
+                )
+                train_stats = self.train_epoch(cur_epoch)
+                self.log_stats(split_name="train", stats=train_stats)
+
+                # 训练完立即存盘，不等 val
+                if is_main_process():
+                    self._save_checkpoint(cur_epoch, is_best=False)
+                    logging.info(
+                        f"[runner_ce_save] ✅ checkpoint_{cur_epoch}.pth 已保存"
+                    )
+
+            # 训练期间完全跳过 val，避免 METEOR BrokenPipeError
+            if self.evaluate_only:
+                break
+
+            try:
+                import torch.distributed as dist
+                if dist.is_available() and dist.is_initialized():
+                    dist.barrier()
+            except Exception:
+                pass
+
+        total_time = time.time() - start_time
+        logging.info(
+            "[runner_ce_save] 训练全部完成，总耗时 {}".format(
+                str(datetime.timedelta(seconds=int(total_time)))
+            )
+        )
+
+    def evaluate(self, cur_epoch="best", skip_reload=False):
+        """离线评估入口，由 05_evaluate_stage1.sh 调用"""
+        test_logs = dict()
+        if len(self.test_splits) > 0:
+            for split_name in self.test_splits:
+                test_logs[split_name] = self.eval_epoch(
+                    split_name=split_name,
+                    cur_epoch=cur_epoch,
+                    skip_reload=skip_reload,
+                )
+        return test_logs
+
+    def train_epoch(self, epoch):
+        self.model.train()
+        return super().train_epoch(epoch)

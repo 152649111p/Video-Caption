@@ -1,0 +1,222 @@
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+| distributed init (rank 0, world 3): env://
+| distributed init (rank 2, world 3): env://
+| distributed init (rank 1, world 3): env://
+NCCL version 2.18.6+cuda12.1
+2026-06-12 18:01:21,556 [INFO] 
+=====  Running Parameters    =====
+2026-06-12 18:01:21,556 [INFO] {
+    "accum_grad_iters": 1,
+    "amp": true,
+    "batch_size_eval": 8,
+    "batch_size_train": 48,
+    "cache_root": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/00.\u6570\u636e\u96c6",
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": false,
+    "gpu": 0,
+    "init_lr": 0.00015,
+    "lr_sched": "linear_warmup_cosine_lr",
+    "max_epoch": 20,
+    "max_len": 32,
+    "min_len": 5,
+    "min_lr": 3e-05,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt",
+    "rank": 0,
+    "resume_ckpt_path": null,
+    "runner": "runner_ce_save",
+    "seed": 42,
+    "task": "captioning",
+    "test_splits": [
+        "test"
+    ],
+    "train_splits": [
+        "train"
+    ],
+    "valid_splits": [],
+    "warmup_lr": 1e-08,
+    "warmup_steps": 1000,
+    "weight_decay": 0.05,
+    "world_size": 3
+}
+2026-06-12 18:01:21,556 [INFO] 
+======  Dataset Attributes  ======
+2026-06-12 18:01:21,556 [INFO] 
+======== msrvtt_caption =======
+2026-06-12 18:01:21,557 [INFO] {
+    "build_info": {
+        "annotations": {
+            "test": {
+                "storage": "msrvtt/annotations/cap_test.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_test.json"
+            },
+            "train": {
+                "storage": "msrvtt/annotations/cap_train.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_train.json"
+            },
+            "val": {
+                "storage": "msrvtt/annotations/cap_val.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_val.json"
+            }
+        },
+        "videos": {
+            "storage": "msrvtt/videos"
+        }
+    },
+    "data_type": "videos",
+    "text_processor": {
+        "eval": {
+            "name": "blip_caption"
+        },
+        "train": {
+            "name": "blip_caption"
+        }
+    },
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_eval"
+        },
+        "train": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_train"
+        }
+    }
+}
+2026-06-12 18:01:21,557 [INFO] 
+======  Model Attributes  ======
+2026-06-12 18:01:21,557 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "load_pretrained": true,
+    "lora": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/01.\u6a21\u578b\u9884\u8bad\u7ec3\u6743\u91cd\u6a21\u578b/blip2_pretrained_flant5xl.pth",
+    "prompt": "a video of",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": true,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_train.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_val.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_test.json
+2026-06-12 18:01:21,558 [INFO] Building datasets...
+2026-06-12 18:01:34,545 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.41s/it]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.49s/it]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.51s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.21s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.39s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.25s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.43s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.26s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:02<00:00,  1.45s/it]
+2026-06-12 18:01:41,665 [INFO] load checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/blip2_pretrained_flant5xl.pth
+2026-06-12 18:01:41,736 [INFO] [runner_ce_save] ===== Epoch 0 / 19 开始训练 =====
+2026-06-12 18:01:45,044 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2026-06-12 18:01:45,044 [INFO] Loaded 130260 records for train split from the dataset.
+2026-06-12 18:01:45,044 [INFO] Loaded 9940 records for val split from the dataset.
+2026-06-12 18:01:45,045 [INFO] Loaded 59800 records for test split from the dataset.
+2026-06-12 18:01:45,062 [INFO] number of trainable parameters: 106739968
+2026-06-12 18:01:45,063 [INFO] Start training epoch 0, 904 iters per inner epoch.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Train: data epoch: [0]  [  0/904]  eta: 2:02:39  lr: 1.0000e-08  loss: 2.9194  time: 8.1405  data: 0.0000  max mem: 26749
+Train: data epoch: [0]  [ 50/904]  eta: 0:54:00  lr: 7.5095e-06  loss: 2.6856  time: 3.7112  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [100/904]  eta: 0:50:18  lr: 1.5009e-05  loss: 2.7858  time: 3.7102  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [150/904]  eta: 0:47:01  lr: 2.2508e-05  loss: 2.5047  time: 3.7224  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [200/904]  eta: 0:43:49  lr: 3.0008e-05  loss: 2.3810  time: 3.7189  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [250/904]  eta: 0:40:41  lr: 3.7507e-05  loss: 2.2847  time: 3.7272  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [300/904]  eta: 0:37:32  lr: 4.5007e-05  loss: 2.3817  time: 3.7098  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [350/904]  eta: 0:34:24  lr: 5.2506e-05  loss: 2.5084  time: 3.7159  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [400/904]  eta: 0:31:17  lr: 6.0006e-05  loss: 2.2022  time: 3.7238  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [450/904]  eta: 0:28:10  lr: 6.7505e-05  loss: 2.3792  time: 3.7082  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [500/904]  eta: 0:25:04  lr: 7.5005e-05  loss: 2.4885  time: 3.6952  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [550/904]  eta: 0:21:57  lr: 8.2504e-05  loss: 2.5271  time: 3.7175  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [600/904]  eta: 0:18:51  lr: 9.0004e-05  loss: 2.4340  time: 3.7087  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [650/904]  eta: 0:15:45  lr: 9.7503e-05  loss: 2.2471  time: 3.7092  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [700/904]  eta: 0:12:39  lr: 1.0500e-04  loss: 2.3967  time: 3.7145  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [750/904]  eta: 0:09:32  lr: 1.1250e-04  loss: 2.2990  time: 3.7166  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [800/904]  eta: 0:06:26  lr: 1.2000e-04  loss: 2.3399  time: 3.7109  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [850/904]  eta: 0:03:20  lr: 1.2750e-04  loss: 2.3960  time: 3.7244  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [900/904]  eta: 0:00:14  lr: 1.3500e-04  loss: 2.3789  time: 3.6948  data: 0.0000  max mem: 28091
+Train: data epoch: [0]  [903/904]  eta: 0:00:03  lr: 1.3545e-04  loss: 2.5357  time: 3.7317  data: 0.0000  max mem: 28091
+Train: data epoch: [0] Total time: 0:56:02 (3.7195 s / it)
+2026-06-12 18:57:47,506 [INFO] Averaged stats: lr: 0.0001  loss: 2.4195
+2026-06-12 18:57:47,539 [INFO] Saving checkpoint at epoch 0 to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612180/checkpoint_0.pth.
+2026-06-12 18:57:49,196 [INFO] [runner_ce_save] ✅ checkpoint_0.pth 已保存
+2026-06-12 18:57:49,197 [INFO] [runner_ce_save] ===== Epoch 1 / 19 开始训练 =====
+2026-06-12 18:57:49,254 [INFO] Start training epoch 1, 904 iters per inner epoch.
+Train: data epoch: [1]  [  0/904]  eta: 2:15:38  lr: 1.4926e-04  loss: 2.2144  time: 9.0023  data: 0.0000  max mem: 28091
+Train: data epoch: [1]  [ 50/904]  eta: 0:54:18  lr: 1.4926e-04  loss: 2.2116  time: 3.7172  data: 0.0000  max mem: 28091
+Train: data epoch: [1]  [100/904]  eta: 0:50:25  lr: 1.4926e-04  loss: 2.4418  time: 3.7111  data: 0.0000  max mem: 28091
+Train: data epoch: [1]  [150/904]  eta: 0:47:05  lr: 1.4926e-04  loss: 2.1662  time: 3.7169  data: 0.0000  max mem: 28091
+[2026-06-12 19:09:10,664] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: -9) local_rank: 0 (pid: 1849) of binary: /root/miniconda3/envs/vtimellm/bin/python
+Traceback (most recent call last):
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+=====================================================
+train.py FAILED
+-----------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-06-12_19:09:10
+  host      : localhost
+  rank      : 1 (local_rank: 1)
+  exitcode  : -9 (pid: 1850)
+  error_file: <N/A>
+  traceback : Signal 9 (SIGKILL) received by PID 1850
+[2]:
+  time      : 2026-06-12_19:09:10
+  host      : localhost
+  rank      : 2 (local_rank: 2)
+  exitcode  : -9 (pid: 1851)
+  error_file: <N/A>
+  traceback : Signal 9 (SIGKILL) received by PID 1851
+-----------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-06-12_19:09:10
+  host      : localhost
+  rank      : 0 (local_rank: 0)
+  exitcode  : -9 (pid: 1849)
+  error_file: <N/A>
+  traceback : Signal 9 (SIGKILL) received by PID 1849
+=====================================================

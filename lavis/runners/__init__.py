@@ -1,10 +1,5 @@
-"""
- Copyright (c) 2022, anonymous.com, inc.
- All rights reserved.
- SPDX-License-Identifier: BSD-3-Clause
- For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
-"""
-
+# [CWR_复现] 重写: 只保留两个 Runner
+from lavis.common.registry import registry
 from lavis.runners.runner_base import RunnerBase
 from lavis.runners.runner_iter import RunnerIter
 

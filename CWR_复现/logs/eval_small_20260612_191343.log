@@ -1,0 +1,197 @@
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+| distributed init (rank 0, world 1): env://
+NCCL version 2.18.6+cuda12.1
+2026-06-12 19:13:50,238 [INFO] 
+=====  Running Parameters    =====
+2026-06-12 19:13:50,240 [INFO] {
+    "batch_size_eval": 8,
+    "batch_size_train": 8,
+    "cache_root": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/00.\u6570\u636e\u96c6",
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": true,
+    "gpu": 0,
+    "max_len": 32,
+    "min_len": 5,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt_eval",
+    "rank": 0,
+    "seed": 42,
+    "task": "captioning",
+    "test_splits": [
+        "test"
+    ],
+    "world_size": 1
+}
+2026-06-12 19:13:50,240 [INFO] 
+======  Dataset Attributes  ======
+2026-06-12 19:13:50,240 [INFO] 
+======== msrvtt_caption =======
+2026-06-12 19:13:50,241 [INFO] {
+    "build_info": {
+        "annotations": {
+            "test": {
+                "storage": "msrvtt/annotations/cap_test_small.json",
+                "url": ""
+            },
+            "train": {
+                "storage": "msrvtt/annotations/cap_train.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_train.json"
+            },
+            "val": {
+                "storage": "msrvtt/annotations/cap_val.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_val.json"
+            }
+        },
+        "videos": {
+            "storage": "msrvtt/videos"
+        }
+    },
+    "data_type": "videos",
+    "text_processor": {
+        "eval": {
+            "name": "blip_caption"
+        },
+        "train": {
+            "name": "blip_caption"
+        }
+    },
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_eval"
+        },
+        "train": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_train"
+        }
+    }
+}
+2026-06-12 19:13:50,241 [INFO] 
+======  Model Attributes  ======
+2026-06-12 19:13:50,242 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "load_pretrained": true,
+    "lora": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt/20260612180/checkpoint_0.pth",
+    "prompt": "a video of",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": false,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_train.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_val.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_test_small.json
+2026-06-12 19:13:50,244 [INFO] Building datasets...
+2026-06-12 19:14:01,436 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|                                                       | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|███████████████████████▌                       | 1/2 [00:01<00:01,  1.11s/it]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:01<00:00,  1.60it/s]Loading checkpoint shards: 100%|███████████████████████████████████████████████| 2/2 [00:01<00:00,  1.44it/s]
+2026-06-12 19:14:05,869 [INFO] load checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612180/checkpoint_0.pth
+2026-06-12 19:14:05,931 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2026-06-12 19:14:05,932 [INFO] Loaded 130260 records for train split from the dataset.
+2026-06-12 19:14:05,932 [INFO] Loaded 9940 records for val split from the dataset.
+2026-06-12 19:14:05,932 [INFO] Loaded 400 records for test split from the dataset.
+2026-06-12 19:14:05,932 [INFO] Empty train splits.
+2026-06-12 19:14:05,932 [INFO] Empty train splits.
+2026-06-12 19:14:05,932 [INFO] Empty train splits.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:394: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+Evaluation  [ 0/50]  eta: 0:02:17    time: 2.7459  data: 0.8937  max mem: 9670
+Evaluation  [10/50]  eta: 0:00:49    time: 1.2426  data: 0.0843  max mem: 9696
+Evaluation  [20/50]  eta: 0:00:34    time: 1.0713  data: 0.0034  max mem: 9722
+Evaluation  [30/50]  eta: 0:00:21    time: 1.0115  data: 0.0034  max mem: 9722
+Evaluation  [40/50]  eta: 0:00:11    time: 1.0534  data: 0.0034  max mem: 9905
+Evaluation  [49/50]  eta: 0:00:01    time: 1.0675  data: 0.0170  max mem: 9905
+Evaluation Total time: 0:00:54 (1.0827 s / it)
+2026-06-12 19:15:04,507 [WARNING] rank 0 starts merging results.
+result file saved to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt_eval/20260612191/result/test_epochbest.json
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+{'testlen': 0, 'reflen': 0, 'guess': [0, 0, 0, 0], 'correct': [0, 0, 0, 0]}
+ratio: 1e-06
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Traceback (most recent call last):
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/evaluate.py", line 92, in <module>
+    main()
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/evaluate.py", line 88, in main
+    runner.evaluate(skip_reload=True)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/runners/runner_base.py", line 421, in evaluate
+    test_logs[split_name] = self.eval_epoch(
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/runners/runner_base.py", line 472, in eval_epoch
+    return self.task.after_evaluation(
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 77, in after_evaluation
+    metrics = self._report_metrics(
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/common/dist_utils.py", line 112, in wrapper
+    return func(*args, **kwargs)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 90, in _report_metrics
+    coco_val = caption_eval(coco_gt_root, eval_result_file, split_name)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 233, in caption_eval
+    metrics = get_all_metrics(references, candidates)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 128, in get_all_metrics
+    overall, per_cap = pycoco_eval(scorer, refs, cands)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 165, in pycoco_eval
+    average_score, scores = scorer.compute_score(refs, cands)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/pycocoevalcap/cider/cider.py", line 49, in compute_score
+    (score, scores) = cider_scorer.compute_score()
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/pycocoevalcap/cider/cider_scorer.py", line 187, in compute_score
+    assert(len(self.ctest) >= max(self.document_frequency.values()))
+ValueError: max() arg is an empty sequence
+[2026-06-12 19:15:11,512] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 88395) of binary: /root/miniconda3/envs/vtimellm/bin/python
+Traceback (most recent call last):
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+evaluate.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-06-12_19:15:11
+  host      : localhost
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 88395)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

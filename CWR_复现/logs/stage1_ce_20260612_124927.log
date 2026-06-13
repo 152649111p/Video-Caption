@@ -1,0 +1,293 @@
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+| distributed init (rank 0, world 2): env://
+| distributed init (rank 1, world 2): env://
+NCCL version 2.18.6+cuda12.1
+2026-06-12 12:49:35,048 [INFO] 
+=====  Running Parameters    =====
+2026-06-12 12:49:35,048 [INFO] {
+    "accum_grad_iters": 1,
+    "amp": true,
+    "batch_size_eval": 8,
+    "batch_size_train": 32,
+    "cache_root": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/00.\u6570\u636e\u96c6",
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": false,
+    "gpu": 0,
+    "init_lr": 0.0001,
+    "lr_sched": "linear_warmup_cosine_lr",
+    "max_epoch": 20,
+    "max_len": 32,
+    "min_len": 5,
+    "min_lr": 2e-05,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt",
+    "rank": 0,
+    "resume_ckpt_path": null,
+    "runner": "runner_ce_save",
+    "seed": 42,
+    "task": "captioning",
+    "test_splits": [
+        "test"
+    ],
+    "train_splits": [
+        "train"
+    ],
+    "valid_splits": [
+        "val"
+    ],
+    "warmup_lr": 1e-08,
+    "warmup_steps": 1000,
+    "weight_decay": 0.05,
+    "world_size": 2
+}
+2026-06-12 12:49:35,049 [INFO] 
+======  Dataset Attributes  ======
+2026-06-12 12:49:35,049 [INFO] 
+======== msrvtt_caption =======
+2026-06-12 12:49:35,049 [INFO] {
+    "build_info": {
+        "annotations": {
+            "test": {
+                "storage": "msrvtt/annotations/cap_test.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_test.json"
+            },
+            "train": {
+                "storage": "msrvtt/annotations/cap_train.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_train.json"
+            },
+            "val": {
+                "storage": "msrvtt/annotations/cap_val.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_val.json"
+            }
+        },
+        "videos": {
+            "storage": "msrvtt/videos"
+        }
+    },
+    "data_type": "videos",
+    "text_processor": {
+        "eval": {
+            "name": "blip_caption"
+        },
+        "train": {
+            "name": "blip_caption"
+        }
+    },
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_eval"
+        },
+        "train": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_train"
+        }
+    }
+}
+2026-06-12 12:49:35,049 [INFO] 
+======  Model Attributes  ======
+2026-06-12 12:49:35,049 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "load_pretrained": true,
+    "lora": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/01.\u6a21\u578b\u9884\u8bad\u7ec3\u6743\u91cd\u6a21\u578b/blip2_pretrained_flant5xl.pth",
+    "prompt": "a video of",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": true,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_train.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_val.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_test.json
+2026-06-12 12:49:35,050 [INFO] Building datasets...
+2026-06-12 12:49:47,861 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|                                   | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                   | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████████▌             | 1/2 [00:01<00:01,  1.72s/it]Loading checkpoint shards:  50%|█████████████▌             | 1/2 [00:01<00:01,  1.48s/it]Loading checkpoint shards: 100%|███████████████████████████| 2/2 [00:02<00:00,  1.09it/s]Loading checkpoint shards: 100%|███████████████████████████| 2/2 [00:02<00:00,  1.04s/it]
+Loading checkpoint shards: 100%|███████████████████████████| 2/2 [00:01<00:00,  1.23it/s]Loading checkpoint shards: 100%|███████████████████████████| 2/2 [00:01<00:00,  1.09it/s]
+2026-06-12 12:49:52,796 [INFO] load checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/blip2_pretrained_flant5xl.pth
+2026-06-12 12:49:52,807 [INFO] Start training
+2026-06-12 12:49:54,913 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2026-06-12 12:49:54,913 [INFO] Loaded 130260 records for train split from the dataset.
+2026-06-12 12:49:54,913 [INFO] Loaded 9940 records for val split from the dataset.
+2026-06-12 12:49:54,913 [INFO] Loaded 59800 records for test split from the dataset.
+2026-06-12 12:49:54,927 [INFO] number of trainable parameters: 106739968
+2026-06-12 12:49:54,927 [INFO] Start training epoch 0, 2035 iters per inner epoch.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Train: data epoch: [0]  [   0/2035]  eta: 3:25:18  lr: 1.0000e-08  loss: 3.1713  time: 6.0532  data: 0.0000  max mem: 19731
+Train: data epoch: [0]  [  50/2035]  eta: 1:26:02  lr: 5.0095e-06  loss: 2.6669  time: 2.5453  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 100/2035]  eta: 1:22:50  lr: 1.0009e-05  loss: 2.6748  time: 2.5397  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 150/2035]  eta: 1:20:25  lr: 1.5009e-05  loss: 2.5233  time: 2.5379  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 200/2035]  eta: 1:18:07  lr: 2.0008e-05  loss: 2.1867  time: 2.5421  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 250/2035]  eta: 1:15:54  lr: 2.5008e-05  loss: 2.3839  time: 2.5414  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 300/2035]  eta: 1:13:44  lr: 3.0007e-05  loss: 2.5071  time: 2.5430  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 350/2035]  eta: 1:11:34  lr: 3.5007e-05  loss: 2.3390  time: 2.5389  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 400/2035]  eta: 1:09:25  lr: 4.0006e-05  loss: 2.3899  time: 2.5409  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 450/2035]  eta: 1:07:16  lr: 4.5006e-05  loss: 2.1584  time: 2.5414  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 500/2035]  eta: 1:05:08  lr: 5.0005e-05  loss: 2.5903  time: 2.5408  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 550/2035]  eta: 1:02:59  lr: 5.5005e-05  loss: 2.4097  time: 2.5399  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 600/2035]  eta: 1:00:51  lr: 6.0004e-05  loss: 2.3122  time: 2.5390  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 650/2035]  eta: 0:58:44  lr: 6.5004e-05  loss: 2.2639  time: 2.5392  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 700/2035]  eta: 0:56:36  lr: 7.0003e-05  loss: 2.6382  time: 2.5388  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 750/2035]  eta: 0:54:29  lr: 7.5002e-05  loss: 2.5350  time: 2.5381  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 800/2035]  eta: 0:52:21  lr: 8.0002e-05  loss: 2.5125  time: 2.5327  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 850/2035]  eta: 0:50:13  lr: 8.5002e-05  loss: 2.3485  time: 2.5287  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 900/2035]  eta: 0:48:05  lr: 9.0001e-05  loss: 2.2569  time: 2.5341  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [ 950/2035]  eta: 0:45:58  lr: 9.5000e-05  loss: 2.3019  time: 2.5454  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1000/2035]  eta: 0:43:51  lr: 1.0000e-04  loss: 2.3286  time: 2.5326  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1050/2035]  eta: 0:41:43  lr: 1.0000e-04  loss: 2.5347  time: 2.5346  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1100/2035]  eta: 0:39:36  lr: 1.0000e-04  loss: 2.2016  time: 2.5350  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1150/2035]  eta: 0:37:29  lr: 1.0000e-04  loss: 2.5581  time: 2.5351  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1200/2035]  eta: 0:35:22  lr: 1.0000e-04  loss: 2.4449  time: 2.5550  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1250/2035]  eta: 0:33:15  lr: 1.0000e-04  loss: 2.2873  time: 2.5479  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1300/2035]  eta: 0:31:07  lr: 1.0000e-04  loss: 2.5893  time: 2.5363  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1350/2035]  eta: 0:29:00  lr: 1.0000e-04  loss: 2.5135  time: 2.5375  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1400/2035]  eta: 0:26:53  lr: 1.0000e-04  loss: 2.5106  time: 2.5399  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1450/2035]  eta: 0:24:46  lr: 1.0000e-04  loss: 2.2897  time: 2.5350  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1500/2035]  eta: 0:22:39  lr: 1.0000e-04  loss: 2.4479  time: 2.5451  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1550/2035]  eta: 0:20:32  lr: 1.0000e-04  loss: 2.2710  time: 2.5410  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1600/2035]  eta: 0:18:25  lr: 1.0000e-04  loss: 2.5650  time: 2.5398  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1650/2035]  eta: 0:16:18  lr: 1.0000e-04  loss: 2.3903  time: 2.5415  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1700/2035]  eta: 0:14:11  lr: 1.0000e-04  loss: 2.3348  time: 2.5375  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1750/2035]  eta: 0:12:04  lr: 1.0000e-04  loss: 2.2548  time: 2.5324  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1800/2035]  eta: 0:09:57  lr: 1.0000e-04  loss: 2.5139  time: 2.5361  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1850/2035]  eta: 0:07:49  lr: 1.0000e-04  loss: 2.3532  time: 2.5385  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1900/2035]  eta: 0:05:42  lr: 1.0000e-04  loss: 2.5161  time: 2.5370  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [1950/2035]  eta: 0:03:35  lr: 1.0000e-04  loss: 2.3642  time: 2.5372  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [2000/2035]  eta: 0:01:28  lr: 1.0000e-04  loss: 2.4510  time: 2.5362  data: 0.0000  max mem: 21828
+Train: data epoch: [0]  [2034/2035]  eta: 0:00:02  lr: 1.0000e-04  loss: 2.2871  time: 2.5487  data: 0.0000  max mem: 21828
+Train: data epoch: [0] Total time: 1:26:09 (2.5401 s / it)
+2026-06-12 14:16:04,100 [INFO] Averaged stats: lr: 0.0001  loss: 2.4032
+2026-06-12 14:16:04,104 [INFO] Evaluating on val.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:394: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:394: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+Evaluation  [  0/622]  eta: 0:19:05    time: 1.8421  data: 0.7765  max mem: 21828
+Evaluation  [ 10/622]  eta: 0:12:05    time: 1.1862  data: 0.0736  max mem: 21828
+Evaluation  [ 20/622]  eta: 0:11:50    time: 1.1471  data: 0.0035  max mem: 21828
+Evaluation  [ 30/622]  eta: 0:11:29    time: 1.1534  data: 0.0035  max mem: 21828
+Evaluation  [ 40/622]  eta: 0:11:39    time: 1.2230  data: 0.0034  max mem: 21828
+Evaluation  [ 50/622]  eta: 0:11:18    time: 1.2207  data: 0.0034  max mem: 21828
+Evaluation  [ 60/622]  eta: 0:11:05    time: 1.1484  data: 0.0034  max mem: 21828
+Evaluation  [ 70/622]  eta: 0:10:53    time: 1.1779  data: 0.0035  max mem: 21828
+Evaluation  [ 80/622]  eta: 0:10:40    time: 1.1785  data: 0.0035  max mem: 21828
+Evaluation  [ 90/622]  eta: 0:10:29    time: 1.1813  data: 0.0035  max mem: 21828
+Evaluation  [100/622]  eta: 0:10:14    time: 1.1535  data: 0.0035  max mem: 21828
+Evaluation  [110/622]  eta: 0:10:00    time: 1.1268  data: 0.0036  max mem: 21828
+Evaluation  [120/622]  eta: 0:09:49    time: 1.1647  data: 0.0037  max mem: 21828
+Evaluation  [130/622]  eta: 0:09:36    time: 1.1628  data: 0.0035  max mem: 21828
+Evaluation  [140/622]  eta: 0:09:23    time: 1.1362  data: 0.0034  max mem: 21828
+Evaluation  [150/622]  eta: 0:09:07    time: 1.0827  data: 0.0035  max mem: 21828
+Evaluation  [160/622]  eta: 0:08:54    time: 1.0636  data: 0.0034  max mem: 21828
+Evaluation  [170/622]  eta: 0:08:41    time: 1.1132  data: 0.0034  max mem: 21828
+Evaluation  [180/622]  eta: 0:08:28    time: 1.1079  data: 0.0034  max mem: 21828
+Evaluation  [190/622]  eta: 0:08:20    time: 1.1877  data: 0.0035  max mem: 21828
+Evaluation  [200/622]  eta: 0:08:11    time: 1.2792  data: 0.0035  max mem: 21828
+Evaluation  [210/622]  eta: 0:07:59    time: 1.2080  data: 0.0034  max mem: 21828
+Evaluation  [220/622]  eta: 0:07:47    time: 1.1474  data: 0.0035  max mem: 21828
+Evaluation  [230/622]  eta: 0:07:35    time: 1.1530  data: 0.0035  max mem: 21828
+Evaluation  [240/622]  eta: 0:07:24    time: 1.1672  data: 0.0035  max mem: 21828
+Evaluation  [250/622]  eta: 0:07:12    time: 1.1583  data: 0.0035  max mem: 21828
+Evaluation  [260/622]  eta: 0:07:01    time: 1.1742  data: 0.0035  max mem: 21828
+Evaluation  [270/622]  eta: 0:06:48    time: 1.1584  data: 0.0035  max mem: 21828
+Evaluation  [280/622]  eta: 0:06:36    time: 1.1026  data: 0.0034  max mem: 21828
+Evaluation  [290/622]  eta: 0:06:25    time: 1.1388  data: 0.0034  max mem: 21828
+Evaluation  [300/622]  eta: 0:06:13    time: 1.1893  data: 0.0034  max mem: 21828
+Evaluation  [310/622]  eta: 0:06:01    time: 1.1530  data: 0.0034  max mem: 21828
+Evaluation  [320/622]  eta: 0:05:49    time: 1.0774  data: 0.0034  max mem: 21828
+Evaluation  [330/622]  eta: 0:05:36    time: 1.0573  data: 0.0034  max mem: 21828
+Evaluation  [340/622]  eta: 0:05:24    time: 1.0771  data: 0.0034  max mem: 21828
+Evaluation  [350/622]  eta: 0:05:13    time: 1.1228  data: 0.0034  max mem: 21828
+Evaluation  [360/622]  eta: 0:05:01    time: 1.1638  data: 0.0035  max mem: 21828
+Evaluation  [370/622]  eta: 0:04:50    time: 1.1548  data: 0.0034  max mem: 21828
+Evaluation  [380/622]  eta: 0:04:38    time: 1.1551  data: 0.0035  max mem: 21828
+Evaluation  [390/622]  eta: 0:04:27    time: 1.2103  data: 0.0035  max mem: 21828
+Evaluation  [400/622]  eta: 0:04:17    time: 1.2861  data: 0.0035  max mem: 21828
+Evaluation  [410/622]  eta: 0:04:05    time: 1.2096  data: 0.0035  max mem: 21828
+Evaluation  [420/622]  eta: 0:03:53    time: 1.1094  data: 0.0034  max mem: 21828
+Evaluation  [430/622]  eta: 0:03:41    time: 1.1312  data: 0.0034  max mem: 21828
+Evaluation  [440/622]  eta: 0:03:30    time: 1.1225  data: 0.0035  max mem: 21828
+Evaluation  [450/622]  eta: 0:03:18    time: 1.1414  data: 0.0035  max mem: 21828
+Evaluation  [460/622]  eta: 0:03:06    time: 1.1222  data: 0.0035  max mem: 21828
+Evaluation  [470/622]  eta: 0:02:55    time: 1.1154  data: 0.0035  max mem: 21828
+Evaluation  [480/622]  eta: 0:02:43    time: 1.1203  data: 0.0034  max mem: 21828
+Evaluation  [490/622]  eta: 0:02:32    time: 1.1204  data: 0.0034  max mem: 21828
+Evaluation  [500/622]  eta: 0:02:20    time: 1.1272  data: 0.0033  max mem: 21828
+Evaluation  [510/622]  eta: 0:02:08    time: 1.0961  data: 0.0034  max mem: 21828
+Evaluation  [520/622]  eta: 0:01:57    time: 1.1245  data: 0.0035  max mem: 21828
+Evaluation  [530/622]  eta: 0:01:45    time: 1.1047  data: 0.0035  max mem: 21828
+Evaluation  [540/622]  eta: 0:01:34    time: 1.0629  data: 0.0034  max mem: 21828
+Evaluation  [550/622]  eta: 0:01:22    time: 1.0930  data: 0.0034  max mem: 21828
+Evaluation  [560/622]  eta: 0:01:11    time: 1.1556  data: 0.0034  max mem: 21828
+Evaluation  [570/622]  eta: 0:00:59    time: 1.1697  data: 0.0034  max mem: 21828
+Evaluation  [580/622]  eta: 0:00:48    time: 1.1391  data: 0.0034  max mem: 21828
+Evaluation  [590/622]  eta: 0:00:36    time: 1.1124  data: 0.0034  max mem: 21828
+Evaluation  [600/622]  eta: 0:00:25    time: 1.1265  data: 0.0034  max mem: 21828
+Evaluation  [610/622]  eta: 0:00:13    time: 1.1393  data: 0.0034  max mem: 21828
+Evaluation  [620/622]  eta: 0:00:02    time: 1.1267  data: 0.0033  max mem: 21828
+Evaluation  [621/622]  eta: 0:00:01    time: 1.1026  data: 0.0153  max mem: 21828
+Evaluation Total time: 0:11:52 (1.1452 s / it)
+2026-06-12 14:27:56,430 [WARNING] rank 0 starts merging results.
+result file saved to /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612124/result/val_epoch0.json
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+{'testlen': 0, 'reflen': 0, 'guess': [0, 0, 0, 0], 'correct': [0, 0, 0, 0]}
+ratio: 1e-06
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Error: Could not find or load main class edu.stanford.nlp.process.PTBTokenizer
+Caused by: java.lang.ClassNotFoundException: edu.stanford.nlp.process.PTBTokenizer
+Traceback (most recent call last):
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/train.py", line 103, in <module>
+    main()
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/train.py", line 99, in main
+    runner.train()
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/CWR_复现/runners/runner_ce_save.py", line 34, in train
+    val_log = self.eval_epoch(split_name=split_name, cur_epoch=cur_epoch)
+  File "/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/runners/runner_base.py", line 472, in eval_epoch
+    return self.task.after_evaluation(
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 77, in after_evaluation
+    metrics = self._report_metrics(
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/common/dist_utils.py", line 112, in wrapper
+    return func(*args, **kwargs)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 90, in _report_metrics
+    coco_val = caption_eval(coco_gt_root, eval_result_file, split_name)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 233, in caption_eval
+    metrics = get_all_metrics(references, candidates)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 128, in get_all_metrics
+    overall, per_cap = pycoco_eval(scorer, refs, cands)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/captioning.py", line 165, in pycoco_eval
+    average_score, scores = scorer.compute_score(refs, cands)
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/pycocoevalcap/meteor/meteor.py", line 37, in compute_score
+    stat = self._stat(res[i][0], gts[i])
+  File "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/mllm-video-captioner/lavis/tasks/pycocoevalcap/meteor/meteor.py", line 57, in _stat
+    self.meteor_p.stdin.flush()
+BrokenPipeError: [Errno 32] Broken pipe

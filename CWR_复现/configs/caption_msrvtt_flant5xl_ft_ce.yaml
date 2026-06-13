@@ -1,0 +1,65 @@
+model:
+  arch: blip2_t5
+  model_type: pretrain_flant5xl
+  load_pretrained: True
+  load_finetuned: False
+
+  pretrained: "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/01.模型预训练权重模型/blip2_pretrained_flant5xl.pth"
+
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: True
+  vit_precision: "fp16"
+  freeze_vit: True
+  lora: False
+
+  num_query_token: 32
+  t5_model: "google/flan-t5-xl"
+  prompt: "a video of"
+
+datasets:
+  msrvtt_caption:
+    vis_processor:
+      train: { name: "alpro_video_train", n_frms: 8, image_size: 224 }
+      eval:  { name: "alpro_video_eval",  n_frms: 8, image_size: 224 }
+    text_processor:
+      train: { name: "blip_caption" }
+      eval:  { name: "blip_caption" }
+
+run:
+  runner: runner_ce_save
+  task: captioning
+
+  lr_sched: "linear_warmup_cosine_lr"
+  init_lr: 1.5e-4
+  min_lr: 3e-5
+  warmup_lr: 1e-8
+  warmup_steps: 1000
+  weight_decay: 0.05
+
+  max_epoch: 20
+  batch_size_train: 48
+  batch_size_eval: 8
+  num_workers: 4
+  accum_grad_iters: 1
+
+  max_len: 32
+  min_len: 5
+  num_beams: 5
+
+  seed: 42
+  output_dir: "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt"
+  cache_root: "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/00.数据集"
+
+  amp: True
+  resume_ckpt_path: "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt/20260612180/checkpoint_0.pth"
+
+  evaluate: False
+  train_splits: ["train"]
+  valid_splits: []
+  test_splits: ["test"]
+
+  device: "cuda"
+  world_size: 1
+  dist_url: "env://"
+  distributed: True
