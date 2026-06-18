@@ -1,0 +1,126 @@
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+| distributed init (rank 0, world 1): env://
+2026-06-14 22:19:51,612 [INFO] 
+=====  Running Parameters    =====
+2026-06-14 22:19:51,613 [INFO] {
+    "batch_size_eval": 8,
+    "batch_size_train": 8,
+    "cache_root": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/00.\u6570\u636e\u96c6",
+    "device": "cuda",
+    "dist_backend": "nccl",
+    "dist_url": "env://",
+    "distributed": true,
+    "evaluate": true,
+    "gpu": 0,
+    "max_len": 32,
+    "min_len": 5,
+    "num_beams": 5,
+    "num_workers": 4,
+    "output_dir": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08CE\uff09/Caption_msrvtt_eval",
+    "rank": 0,
+    "seed": 42,
+    "task": "captioning",
+    "test_splits": [
+        "test"
+    ],
+    "world_size": 1
+}
+2026-06-14 22:19:51,614 [INFO] 
+======  Dataset Attributes  ======
+2026-06-14 22:19:51,614 [INFO] 
+======== msrvtt_caption =======
+2026-06-14 22:19:51,615 [INFO] {
+    "build_info": {
+        "annotations": {
+            "test": {
+                "storage": "msrvtt/annotations/cap_test.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_test.json"
+            },
+            "train": {
+                "storage": "msrvtt/annotations/cap_train.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_train.json"
+            },
+            "val": {
+                "storage": "msrvtt/annotations/cap_val.json",
+                "url": "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/datasets/msrvtt/cap_val.json"
+            }
+        },
+        "videos": {
+            "storage": "msrvtt/videos"
+        }
+    },
+    "data_type": "videos",
+    "text_processor": {
+        "eval": {
+            "name": "blip_caption"
+        },
+        "train": {
+            "name": "blip_caption"
+        }
+    },
+    "vis_processor": {
+        "eval": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_eval"
+        },
+        "train": {
+            "image_size": 224,
+            "n_frms": 8,
+            "name": "alpro_video_train"
+        }
+    }
+}
+2026-06-14 22:19:51,616 [INFO] 
+======  Model Attributes  ======
+2026-06-14 22:19:51,616 [INFO] {
+    "arch": "blip2_t5",
+    "drop_path_rate": 0,
+    "finetuned": "",
+    "freeze_vit": true,
+    "image_size": 224,
+    "load_finetuned": false,
+    "load_pretrained": true,
+    "lora": false,
+    "model_type": "pretrain_flant5xl",
+    "num_query_token": 32,
+    "pretrained": "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1\u4ee3\u7801\u8def\u5f84/\u5927\u8bba\u6587-\u89c6\u9891\u5b57\u5e55\u751f\u6210\u4e13\u9879_BLIP-2_for_Video/02.\u6a21\u578b\u8bad\u7ec3\u5b58\u653e\uff08SCST\uff09/Caption_msrvtt/20260614162/checkpoint_2.pth",
+    "prompt": "a video of",
+    "t5_model": "google/flan-t5-xl",
+    "use_grad_checkpoint": false,
+    "vit_precision": "fp16"
+}
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_train.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_val.json
+Using downloaded and verified file: /home/anonymous/new_ssd/lavis_datasets/msrvtt/annotations/cap_test.json
+2026-06-14 22:19:51,618 [INFO] Building datasets...
+2026-06-14 22:20:03,289 [INFO] freeze vision encoder
+Loading checkpoint shards:   0%|                                             | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|██████████████████▌                  | 1/2 [00:01<00:01,  1.25s/it]Loading checkpoint shards: 100%|█████████████████████████████████████| 2/2 [00:01<00:00,  1.42it/s]Loading checkpoint shards: 100%|█████████████████████████████████████| 2/2 [00:01<00:00,  1.27it/s]
+2026-06-14 22:20:07,958 [INFO] load checkpoint from /root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（SCST）/Caption_msrvtt/20260614162/checkpoint_2.pth
+2026-06-14 22:20:08,003 [INFO] dataset_ratios not specified, datasets will be concatenated (map-style datasets) or chained (webdataset.DataPipeline).
+2026-06-14 22:20:08,003 [INFO] Loaded 130260 records for train split from the dataset.
+2026-06-14 22:20:08,003 [INFO] Loaded 9940 records for val split from the dataset.
+2026-06-14 22:20:08,003 [INFO] Loaded 59800 records for test split from the dataset.
+2026-06-14 22:20:08,003 [INFO] Empty train splits.
+2026-06-14 22:20:08,003 [INFO] Empty train splits.
+2026-06-14 22:20:08,003 [INFO] Empty train splits.
+/root/miniconda3/envs/vtimellm/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:394: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+Evaluation  [   0/7475]  eta: 6:14:33    time: 3.0064  data: 1.1727  max mem: 9667
+Evaluation  [  10/7475]  eta: 2:35:15    time: 1.2478  data: 0.1097  max mem: 9695
+Evaluation  [  20/7475]  eta: 2:17:59    time: 1.0157  data: 0.0034  max mem: 9695
+Evaluation  [  30/7475]  eta: 2:13:51    time: 0.9857  data: 0.0034  max mem: 9695
+Evaluation  [  40/7475]  eta: 2:11:04    time: 1.0024  data: 0.0034  max mem: 9695
+Evaluation  [  50/7475]  eta: 2:09:07    time: 0.9887  data: 0.0034  max mem: 9695
+Evaluation  [  60/7475]  eta: 2:08:44    time: 1.0090  data: 0.0034  max mem: 9790
+Evaluation  [  70/7475]  eta: 2:07:12    time: 0.9984  data: 0.0034  max mem: 9790
+Evaluation  [  80/7475]  eta: 2:06:18    time: 0.9733  data: 0.0034  max mem: 9790
+Evaluation  [  90/7475]  eta: 2:05:23    time: 0.9761  data: 0.0034  max mem: 9790
+Evaluation  [ 100/7475]  eta: 2:04:54    time: 0.9813  data: 0.0034  max mem: 9790
+Evaluation  [ 110/7475]  eta: 2:04:09    time: 0.9784  data: 0.0033  max mem: 9790
+Evaluation  [ 120/7475]  eta: 2:05:10    time: 1.0461  data: 0.0033  max mem: 9900
+Evaluation  [ 130/7475]  eta: 2:05:16    time: 1.0893  data: 0.0033  max mem: 9900
+Evaluation  [ 140/7475]  eta: 2:04:30    time: 1.0024  data: 0.0033  max mem: 9900

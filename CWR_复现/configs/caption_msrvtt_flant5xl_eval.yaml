@@ -1,17 +1,22 @@
 model:
   arch: blip2_t5
   model_type: pretrain_flant5xl
-  load_pretrained: True
-  load_finetuned: False
 
-  pretrained: "REPLACE_BY_05_SCRIPT"
+  load_finetuned: True
+  load_pretrained: False
+  finetuned: "REPLACE_BY_05_SCRIPT"
 
   image_size: 224
   drop_path_rate: 0
   use_grad_checkpoint: False
   vit_precision: "fp16"
   freeze_vit: True
-  lora: False
+
+  lora: True
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+
   num_query_token: 32
   t5_model: "google/flan-t5-xl"
   prompt: "a video of"
@@ -27,6 +32,8 @@ datasets:
 
 run:
   task: captioning
+  runner: runner_base
+
   batch_size_train: 8
   batch_size_eval: 8
   num_workers: 4
@@ -39,7 +46,10 @@ run:
   output_dir: "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/02.模型训练存放（CE）/Caption_msrvtt_eval"
   cache_root: "/root/autodl-tmp/CLIP_prefix_caption/Detic/1-1代码路径/大论文-视频字幕生成专项_BLIP-2_for_Video/00.数据集"
 
+  amp: True
   evaluate: True
+  train_splits: []
+  valid_splits: []
   test_splits: ["test"]
 
   device: "cuda"

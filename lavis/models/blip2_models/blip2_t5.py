@@ -297,8 +297,41 @@ class Blip2T5(Blip2Base):
                 reward = Cider().compute_score(caps_gt, caps_gen)[1].astype(np.float32)
                 reward = torch.from_numpy(reward).to(image.device).view(B, self.beam_size)
                 reward_baseline = torch.mean(reward, -1, keepdim=True)
-                loss = - (sequences_scores) * (reward-reward_baseline)
-                loss = loss.mean()
+                # SCST standard: reward-weighted policy gradient.
+                # sequences_scores has no grad (from generate) — detach is correct.
+                # Build a differentiable anchor via a minimal T5 encoder forward
+                # so LoRA params (q/v in T5) participate in the compute graph.
+                reward_diff = (reward - reward_baseline).detach()  # [B, beam_size]
+
+                # ── Teacher-forcing: 重新计算 log-prob，梯度正确流回 LoRA ──────
+                sequences  = outputs.sequences           # [B*beam, T]
+                dec_labels = sequences[:, 1:].clone()    # [B*beam, T-1]
+                dec_labels[dec_labels == self.t5_tokenizer.pad_token_id] = -100
+
+                # 将 encoder 输入扩展到 beam 维度
+                inputs_embeds_rep = inputs_embeds.repeat_interleave(self.beam_size, dim=0)
+                encoder_atts_rep  = encoder_atts.repeat_interleave(self.beam_size, dim=0)
+
+                tf_out = self.t5_model(
+                    inputs_embeds=inputs_embeds_rep,
+                    attention_mask=encoder_atts_rep,
+                    labels=dec_labels,
+                    return_dict=True,
+                )
+
+                # 逐样本 log-prob（含梯度 → LoRA 参数真正被更新）
+                logits   = tf_out.logits.float()         # [B*beam, T-1, vocab]
+                log_prob = torch.nn.functional.log_softmax(logits, dim=-1)
+                tok_lp   = log_prob.gather(
+                    2, dec_labels.clamp(min=0).unsqueeze(2)
+                ).squeeze(2)                             # [B*beam, T-1]
+                pad_mask = (dec_labels != -100).float()
+                seq_lp   = (tok_lp * pad_mask).sum(1) / pad_mask.sum(1).clamp(min=1)
+                seq_lp   = seq_lp.view(B, self.beam_size)  # [B, beam]
+
+                # 策略梯度：最大化期望 reward
+                scst_loss = -(reward_diff * seq_lp).mean()
+                loss = scst_loss
 
                 return {"loss": loss}
 

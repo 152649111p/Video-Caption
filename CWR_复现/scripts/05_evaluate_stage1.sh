@@ -11,9 +11,19 @@ if [ -z "$CKPT" ] || [ ! -f "$CKPT" ]; then
     exit 1
 fi
 
+OUTPUT_DIR="$ROOT/02.模型训练存放（CE）/Caption_msrvtt_eval"
+CACHE_ROOT="$ROOT/00.数据集"
+
 TMP="$CWR/configs/_eval_tmp_$(date +%s).yaml"
-sed "s#REPLACE_BY_05_SCRIPT#$CKPT#g" \
-    "$CWR/configs/caption_msrvtt_flant5xl_eval.yaml" > "$TMP"
+sed "s#REPLACE_BY_05_SCRIPT#${CKPT}#g" \
+    "$CWR/configs/caption_msrvtt_flant5xl_eval.yaml" \
+  | sed "s#REPLACE_OUTPUT_DIR#${OUTPUT_DIR}#g" \
+  | sed "s#REPLACE_CACHE_ROOT#${CACHE_ROOT}#g" \
+  > "$TMP"
+
+echo "=== 生效的 yaml 关键字段 ==="
+grep -E "lora|load_finetuned|finetuned:|pretrained:" "$TMP"
+echo "==============================="
 
 LOG="$CWR/logs/eval_$(date +%Y%m%d_%H%M%S).log"
 
@@ -31,4 +41,4 @@ python -m torch.distributed.run \
 
 rm -f "$TMP"
 echo ""
-echo "✅ 评估完成, 指标日志: $LOG"
+echo "✅ 评估完成，日志: $LOG"
